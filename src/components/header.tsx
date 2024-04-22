@@ -13,7 +13,7 @@ type MaterialHeaderProps = {
 
 const MaterialHeader: React.FC<MaterialHeaderProps> = ({ title, links, onLoginClick }) => {
   return (
-    <Card sx={{ backgroundColor: 'white', color: 'black', position: 'fixed', height: '4rem', top: '1rem', width: '100%', borderRadius: '2rem', zIndex: 1000 }}>
+    <Card sx={{ my:2,mx:'auto',backgroundColor: 'white', color: 'black', height: '4rem', top: '1rem', width: '95%', borderRadius: '2rem', zIndex: 1000 }}>
       <CardContent>
         <Box display="flex" alignItems="center" justifyContent="space-between" margin="4px">
           {/* Adjust width and height of the Box to fit the logo and add vertical alignment */}
