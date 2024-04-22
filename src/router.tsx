@@ -5,6 +5,7 @@ export default function AppRoute() {
   return (
     <Routes>
       <Route path="/" element={<PageHome />} />
+      <Route path="/features" element={<PageHome />} />
     </Routes>
   );
 }
