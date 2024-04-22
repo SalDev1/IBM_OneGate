@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
-import Logo  from './logo.svg'; // Import the SVG file correctly
+import Logo from '../assets/logo.svg';
 
-interface MaterialHeaderProps {
+type MaterialHeaderProps = {
   title: string;
   links: {
     label: string;
@@ -18,9 +18,11 @@ const MaterialHeader: React.FC<MaterialHeaderProps> = ({ title, links, onLoginCl
         <Box display="flex" alignItems="center" justifyContent="space-between" margin="4px">
           {/* Adjust width and height of the Box to fit the logo and add vertical alignment */}
           <Box sx={{ width: '60px', height: '52px', display: 'flex', alignItems: 'center' }}>
-            <Logo style={{ width: '100%', height: '45px', marginTop: '-28px' }} />
+            <div style={{ width: '100%', height: '45px', marginTop: '-28px' }}>
+              <img src={Logo} />
+            </div>
           </Box>
-          <Typography variant="h5" component="h2" sx={{ fontFamily: 'Inter, sans-serif' , marginRight : '660px' , marginTop : '-25px' , color : '#323EDD' , fontWeight: 'bolder' }}>
+          <Typography variant="h5" component="h2" sx={{ fontFamily: 'Inter, sans-serif', marginRight: '660px', marginTop: '-25px', color: '#323EDD', fontWeight: 'bolder' }}>
             {title}
           </Typography>
           <Box display="flex">
@@ -30,7 +32,7 @@ const MaterialHeader: React.FC<MaterialHeaderProps> = ({ title, links, onLoginCl
               </Typography>
             ))}
             <Box sx={{ marginRight: '1rem', marginLeft: '2rem' }}>
-            <Button variant="text">Login</Button>
+              <Button variant="text">Login</Button>
             </Box>
           </Box>
         </Box>
