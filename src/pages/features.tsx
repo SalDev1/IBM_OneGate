@@ -210,7 +210,7 @@ const Features: React.FC = () => {
 const links = [
   { label: 'Home', href: '#' },
   { label: 'About', href: '#' },
-  { label: 'Contact', href: '#' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const PageFeatures: React.FC = () => {
