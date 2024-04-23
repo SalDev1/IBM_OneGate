@@ -150,4 +150,39 @@ export default function ExpandTable() {
   </Box>
 </Box>
   );
-}
+};
+
+
+const links = [
+  { label: 'Home', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const PageFeatures: React.FC = () => {
+  function handleLoginClick(): void {
+    throw new Error('Function not implemented.');
+  }
+
+  return (
+    <div>
+      <MaterialHeader title="OneGate" links={links} onLoginClick={handleLoginClick} />
+      <BackgroundImage imageUrl={backgroundImage} headerText="" />
+      <Container
+        maxWidth="xl"
+        sx={{
+          backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          height: '100vh',
+          display: 'flex',
+          textAlign: 'center',
+        }}
+      >
+        <Features />
+      </Container>
+    </div>
+  );
+};
+
+export default PageFeatures;
