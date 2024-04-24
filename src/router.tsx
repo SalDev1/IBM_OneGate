@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
 import PageFeatures from "./pages/features";
-import BackgroundImage from "./pages/home";
 import Contact from "./pages/contact";
+import PageHome from "./pages/home";
 
 export default function AppRoute() {
   return (
     <Routes>
-      <Route path="/home" element={<App/>} />
+      <Route path="/" element={<PageHome />} />
       <Route path="/features" element={<PageFeatures />} />
-      <Route path="/contact" element={<Contact/>}/ >
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
