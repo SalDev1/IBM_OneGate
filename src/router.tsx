@@ -1,15 +1,16 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, NavLink, Link } from "react-router-dom";
 
 import PageFeatures from "./pages/features";
 import Contact from "./pages/contact";
-import PageHome from "./pages/home";
+import AppShell from "./shell";
 
 export default function AppRoute() {
   return (
-    <Routes>
-      <Route path="/" element={<PageHome />} />
-      <Route path="/features" element={<PageFeatures />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
+    <AppShell>
+      <Routes>
+        <Route path="/" element={<PageFeatures />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </AppShell>
   );
 }
