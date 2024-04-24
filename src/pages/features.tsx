@@ -16,45 +16,14 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import userLogs from '../assets/userLogs.png'; // Import the image
-import helpDesk from '../assets/helpDesk.png';
-import newsLetter from '../assets/NewsLetter.jpg';
-import amenities from '../assets/amenities.jpg';
 import MaterialHeader from "../components/header";
-import { Parallax } from 'react-parallax';
 import backgroundImage from '../assets/building.jpg';
 import gray from '../assets/gray.jpg';
 import Footer from '../components/footer';
 import Testimonials from '../components/testimonials';
+import featureItems from "../data/features";
+import BackgroundImage from "../components/parallaxImage";
 
-
-// Define your array with titles, content, and images
-const featureItems: {
-  title: string;
-  content: string;
-  image?: string | null; // Adjust the type to accept string, null, or undefined
-}[] = [
-    {
-      title: "Logs",
-      content: "Access logs and reports for your community.",
-      image: userLogs, // Assuming userLogs is a valid string URL
-    },
-    {
-      title: "Amenities",
-      content: "Explore the various amenities available in your community.",
-      image: amenities, // Or provide null if no image is available
-    },
-    {
-      title: "Newsletter",
-      content: "Stay updated with the latest community news, events, and announcements delivered directly to your inbox.",
-      image: newsLetter,
-    },
-    {
-      title: "HelpDesk",
-      content: "Efficient ticket management and resolution for streamlined customer support.",
-      image: helpDesk,
-    }
-  ];
 
 const tableContainerSx: SxProps = {
   width: "55%",
@@ -64,8 +33,6 @@ const tableContainerSx: SxProps = {
   borderRadius: 6,
   overflowX: "auto",
   position: "absolute",
-
-
 };
 
 function ExpandTable() {
@@ -166,110 +133,6 @@ const links = [
   { label: 'Contact', href: '/contact' },
 ];
 
-interface BackgroundImageProps {
-  imageUrl: string;
-  headerText: string;
-}
-
-const BackgroundImage: React.FC<BackgroundImageProps> = ({
-  imageUrl,
-  headerText,
-}) => {
-  return (
-    <Parallax
-      bgImage={imageUrl}
-      strength={400}
-      style={{
-        height: '150vh',
-        width: '100%',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        // filter: 'brightness(50%)',
-        // opacity: '0.8',
-      }}
-    >
-      <div style={{ height: '100vh' }}>
-        <Container
-          maxWidth="md"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            color: 'white',
-            height: '100%',
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          {/* Typography component for the header text */}
-          <Typography variant="h3" component="h1" gutterBottom style={{ opacity: 1.6, transform: 'translateY(30%)' }}>
-            {headerText}
-          </Typography>
-          {/* Typography component for the additional text */}
-          <Typography variant="h2" gutterBottom sx={{
-            color: 'white',
-            fontWeight: 'bolder',
-            textAlign: 'center',
-            fontFamily: 'Inter, sans-serif',
-            marginBottom: '150px',
-          }}>
-            Experience community living at its best
-          </Typography>
-          {/* Button component for the login call-to-action */}
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{
-              position: 'absolute',
-              right: '150px',
-              bottom: '208px',
-              bgcolor: '#323EDD',
-              color: 'white',
-              whiteSpace: 'nowrap' // Set white-space to nowrap
-            }}
-            href="/login"
-          >
-            JOIN US
-          </Button>
-
-        </Container>
-      </div>
-    </Parallax>
-  );
-};
-
-
-const Features: React.FC = () => {
-  function handleLoginClick(): void {
-    throw new Error('Function not implemented.');
-  }
-
-  return (
-    <div>
-      <MaterialHeader title="OneGate" links={links} onLoginClick={handleLoginClick} />
-      <BackgroundImage imageUrl={backgroundImage} headerText="" />
-      <Container
-        maxWidth="xl"
-        sx={{
-          backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '100vh',
-          display: 'flex',
-          textAlign: 'center',
-        }}
-      >
-        <PageFeatures />
-      </Container>
-      <Testimonials />
-      <Footer />
-    </div>
-  );
-};
-
 
 const PageFeatures: React.FC = () => {
   function handleLoginClick(): void {
@@ -279,7 +142,24 @@ const PageFeatures: React.FC = () => {
   return (
     <div>
       <MaterialHeader title="OneGate" links={links} onLoginClick={handleLoginClick} />
-      <BackgroundImage imageUrl={backgroundImage} headerText="" />
+      <BackgroundImage imageUrl={backgroundImage} headerText="Experience community living at its best" >
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{
+            position: 'absolute',
+            right: '150px',
+            bottom: '208px',
+            bgcolor: '#323EDD',
+            color: 'white',
+            whiteSpace: 'nowrap' // Set white-space to nowrap
+          }}
+          href="/login"
+        >
+          JOIN US
+        </Button>
+      </BackgroundImage>
       <Container
         maxWidth="xl"
         sx={{
@@ -291,9 +171,24 @@ const PageFeatures: React.FC = () => {
           textAlign: 'center',
         }}
       >
-        <Features />
+        <Testimonials />
       </Container>
+      <Container
+        maxWidth="xl"
+        sx={{
+          backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          height: '100vh',
+          display: 'flex',
+          textAlign: 'center',
+        }}
+      >
+        <ExpandTable />
+      </Container>
+      <Footer />
     </div>
   );
 };
-export default Features
+
+export default PageFeatures
