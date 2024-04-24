@@ -16,7 +16,6 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import MaterialHeader from "../components/header";
 import backgroundImage from '../assets/building.jpg';
 import gray from '../assets/gray.jpg';
 import Footer from '../components/footer';
@@ -126,22 +125,9 @@ function ExpandTable() {
   );
 };
 
-
-const links = [
-  { label: 'Home', href: '#' },
-  { label: 'About', href: '#' },
-  { label: 'Contact', href: '/contact' },
-];
-
-
 const PageFeatures: React.FC = () => {
-  function handleLoginClick(): void {
-    throw new Error('Function not implemented.');
-  }
-
   return (
-    <div>
-      <MaterialHeader title="OneGate" links={links} onLoginClick={handleLoginClick} />
+    <>
       <BackgroundImage imageUrl={backgroundImage} headerText="Experience community living at its best" >
         <Button
           variant="contained"
@@ -187,7 +173,7 @@ const PageFeatures: React.FC = () => {
         <ExpandTable />
       </Container>
       <Footer />
-    </div>
+    </>
   );
 };
 

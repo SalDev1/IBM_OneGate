@@ -1,44 +1,60 @@
-import React from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { Typography, Button, Box, AppBar, Toolbar } from '@mui/material';
+import { Link, NavLink } from "react-router-dom"
 import Logo from '../assets/logo.svg';
 
-type MaterialHeaderProps = {
+type ThemedAppBarProps = {
   title: string;
-  links: {
-    label: string;
-    href: string;
-  }[];
-  onLoginClick: () => void;
+  centerItems?: React.ReactNode;
+  trailingItems?: React.ReactNode;
+  transparent?: boolean
 }
 
-const MaterialHeader: React.FC<MaterialHeaderProps> = ({ title, links, onLoginClick }) => {
+type ThemedAppBarLink = {
+  label: string;
+  href: string;
+}
+
+
+const CustomAppBar: React.FC<ThemedAppBarProps> = ({ title, trailingItems, centerItems, transparent }) => {
   return (
-    <Card sx={{ my:2,mx:'auto',backgroundColor: 'white', color: 'black', height: '4rem', top: '1rem', width: '95%', borderRadius: '2rem', zIndex: 1000 }}>
-      <CardContent>
-        <Box display="flex" alignItems="center" justifyContent="space-between" margin="4px">
-          {/* Adjust width and height of the Box to fit the logo and add vertical alignment */}
-          <Box sx={{ width: '60px', height: '52px', display: 'flex', alignItems: 'center' }}>
-            <div style={{ width: '100%', height: '45px', marginTop: '-28px' }}>
+    <AppBar sx={{ p: '0rem', background: 'linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%);' }} elevation={0}>
+      <Toolbar sx={{
+        padding: "0.75rem",
+        backgroundColor: transparent ? '#0000' : '#FFFB',
+        borderBottom: transparent ? "none" : "1px solid #ddd",
+        backdropFilter: transparent ? "none" : 'blur(2rem) saturate(1.5)',
+        color: transparent ? 'white' : 'black',
+        borderRadius: '0rem',
+        boxShadow: transparent ? "none" : '12px 0px 40px #0002',
+        display: 'grid',
+        gridTemplateColumns: `repeat(3, minmax(0, 1fr));`,
+        gridTemplateRows: "1fr"
+      }}>
+        <Box sx={{ display: "flex" }}>
+          <Link to={"/"}>
+            <Button aria-label="open drawer">
               <img src={Logo} />
-            </div>
-          </Box>
-          <Typography variant="h5" component="h2" sx={{ fontFamily: 'Inter, sans-serif', marginRight: '660px', marginTop: '-25px', color: '#323EDD', fontWeight: 'bolder' }}>
-            {title}
-          </Typography>
-          <Box display="flex">
-            {links.map((link, index) => (
-              <Typography key={index} component="a" href={link.href} sx={{ color: 'black', textDecoration: 'none', marginLeft: index === links.length - 1 ? '2rem' : '3rem', fontFamily: 'Inter, sans-serif', fontSize: '17px' }}>
-                {link.label}
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: 'none', sm: 'block' }, fontFamily: 'Inter, sans-serif', color: transparent ? 'white' : '#323EDD', textTransform: "capitalize" }}
+              >
+                {title}
               </Typography>
-            ))}
-            <Box sx={{ marginRight: '1rem', marginLeft: '2rem' }}>
-              <Button variant="text">Login</Button>
-            </Box>
-          </Box>
+            </Button></Link>
         </Box>
-      </CardContent>
-    </Card>
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: "center" }}>
+          {centerItems}
+        </Box>
+
+        <Box sx={{ marginRight: '1rem', marginLeft: '2rem', display: "flex", gap: '1rem', flexDirection: "row-reverse" }}>
+          {trailingItems}
+        </Box>
+
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default MaterialHeader;
+export default CustomAppBar;
