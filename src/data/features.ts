@@ -1,7 +1,7 @@
 import Feature from "../types/feature";
 import userLogs from "../assets/userLogs.png";
 import newsLetter from "../assets/NewsLetter.jpg";
-import helpDesk from "../assets/helpDesk.png";
+import helpDesk from "../assets/helpdesk.png";
 import amenities from "../assets/amenities.jpg";
 
 const featureItems: Feature[] = [

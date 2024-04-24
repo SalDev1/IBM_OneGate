@@ -6,6 +6,7 @@ import AppShell from "./shell";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Forget from "./pages/Forget"
+import DashBoard from "./pages/Dashboard";
 
 export default function AppRoute() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoute() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forget-password" element={<Forget />} />
+        <Route path="/dashboard" element={<DashBoard />}/>
       </Routes>
     </AppShell>
   );
