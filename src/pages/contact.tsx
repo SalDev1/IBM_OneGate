@@ -9,21 +9,14 @@ import {
 import Button from "@mui/material/Button";
 
 const Contact: React.FC = () => {
-  function handleLoginClick(): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
-    <Container sx={{ m: 5 }}>
-      <Paper sx={{ py: 5 }} elevation={4}>
-        <Grid sx={{ p: 4 }} container justifyContent="center">
-          <Typography variant="h3">Contact Us</Typography>
-        </Grid>
-        <Grid sx={{ px: 3 }} container>
-          <Grid item xs={6}>
-            <img src="https://picsum.photos/500/500"></img>
-          </Grid>
-          <Grid item xs={6}>
+    <Container sx={{ py: 15 }}>
+      <div className="border-slate-200 shadow-xl max-w-4xl mx-auto rounded-xl overflow-hidden border grid sm:grid-rows-2 sm:grid-cols-1 md:grid-rows-1 md:grid-cols-2">
+        <img src="https://picsum.photos/500/500" className="bg-black w-full h-full"></img>
+        <Grid p={4} container justifyContent="center">
+          <Typography variant="h6">Contact Us</Typography>
+          <Grid container sx={{ width: "100%" }}>
+
             <Box
               component="form"
               sx={{
@@ -69,15 +62,16 @@ const Contact: React.FC = () => {
                     rows={4}
                   />
                 </Grid>
-                <Grid item xs={12} sx={{ p: 1 }}>
-                  <Button variant="contained">Submit</Button>
+                <Grid item xs={12} sx={{ pt: 1, display: "flex", flexDirection: "row-reverse" }}>
+                  <button className="primary sm:flex-grow-1 md:flex-grow-0">Submit</button>
                 </Grid>
               </Grid>
             </Box>
           </Grid>
         </Grid>
-      </Paper>
-    </Container>
+      </div>
+
+    </Container >
   );
 };
 
