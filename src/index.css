@@ -12,10 +12,25 @@
   font-variation-settings: "slnt" 0;
 }
 
-button {
-  @apply text-center border px-8 py-2 rounded-full transition-all border-slate-500/30 hover:bg-slate-500/30;
-
+button,
+.button {
+  @apply flex p-2 items-center md:px-6;
+  @apply border border-slate-800/20 hover:bg-slate-800/10;
+  @apply rounded-full transition-all;
   &.primary {
-    @apply border-none bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl shadow-blue-700/60 hover:shadow-blue-700/40 text-white;
+    @apply text-white bg-[#323EDD];
+  }
+  &.icon {
+    @apply border-none md:px-2;
+  }
+  &.lightBorder {
+    @apply border-white/30;
+  }
+  &.inactive {
+    @apply border-none;
+  }
+  &.active {
+    @apply bg-white text-black border-none shadow-lg;
   }
 }
+/* 323EDD */
