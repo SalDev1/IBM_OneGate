@@ -14,7 +14,7 @@
 
 button,
 .button {
-  @apply flex p-2 items-center md:px-6;
+  @apply flex p-1 items-center md:px-6 font-medium;
   @apply border border-slate-800/20 hover:bg-slate-800/10;
   @apply rounded-full transition-all;
   &.primary {
@@ -34,3 +34,23 @@ button,
   }
 }
 /* 323EDD */
+
+.shadow-bg {
+  background: rgb(0, 0, 0);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
