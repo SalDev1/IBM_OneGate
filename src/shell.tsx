@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "./components/header";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Button from "./components/button";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {

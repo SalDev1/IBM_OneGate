@@ -26,62 +26,28 @@ function ButtonHome({ title, transparent }: ButtonHomeProps) {
   );
 }
 
-const CustomAppBar: React.FC<ThemedAppBarProps> = ({
+const ThemedAppBar: React.FC<ThemedAppBarProps> = ({
   title,
   trailingItems,
   centerItems,
   transparent,
 }) => {
-  return (
-    <AppBar
-      sx={{
-        p: "0rem",
-        background:
-          "linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0) 100%);",
-      }}
-      elevation={0}
-    >
-      <Toolbar
-        sx={{
-          padding: "0.75rem",
-          backgroundColor: transparent ? "#0000" : "#FFFB",
-          borderBottom: transparent ? "none" : "1px solid #ddd",
-          backdropFilter: transparent ? "none" : "blur(2rem) saturate(1.5)",
-          color: transparent ? "white" : "black",
-          borderRadius: "0rem",
-          boxShadow: transparent ? "none" : "12px 0px 40px #0002",
-          display: "grid",
-          gridTemplateColumns: {
-            sm: `repeat(2, minmax(0, 1fr));`,
-            md: `repeat(3, minmax(0, 1fr));`,
-          },
-          gridTemplateRows: "1fr",
-        }}
-      >
-        <Box sx={{ display: "flex" }}>
-          <ButtonToggleMenu />
-          <ButtonHome title={title} transparent={transparent} />
-        </Box>
-        <Box
-          sx={{ display: { xs: "none", md: "flex" }, justifyContent: "center" }}
-        >
-          {centerItems}
-        </Box>
+  const containerStyles =
+    "top-0 p-4 z-10 w-full grid sm:grid-cols-2 md:grid-cols-3 grid-rows-1 " +
+    (transparent
+      ? "fixed shadow-bg text-white "
+      : "sticky backdrop-blur-xl backdrop-saturate-150 shadow-lg border-b border-slate-300 bg-white/70");
 
-        <Box
-          sx={{
-            marginRight: "1rem",
-            marginLeft: "2rem",
-            display: "flex",
-            gap: "1rem",
-            flexDirection: "row-reverse",
-          }}
-        >
-          {trailingItems}
-        </Box>
-      </Toolbar>
-    </AppBar>
+  return (
+    <header className={containerStyles}>
+      <aside className="flex">
+        <ButtonToggleMenu />
+        <ButtonHome title={title} transparent={transparent} />
+      </aside>
+      <nav className="hidden md:flex justify-center ">{centerItems}</nav>
+      <section className="flex gap-4 flex-row-reverse">{trailingItems}</section>
+    </header>
   );
 };
 
-export default CustomAppBar;
+export default ThemedAppBar;
