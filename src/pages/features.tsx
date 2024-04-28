@@ -23,15 +23,18 @@ import Testimonials from "../components/testimonials";
 import featureItems from "../data/features";
 import BackgroundImage from "../components/parallaxImage";
 import Button from "../components/button";
+import NavBar from "../components/NavBar";
+import HouseImage from "../assets/house.png";
 
 const tableContainerSx: SxProps = {
-  width: "55%",
+  width: "90%",
   marginLeft: "auto",
   marginRight: "24rem",
   marginTop: 4,
   borderRadius: 6,
   overflowX: "auto",
-  position: "absolute",
+   // position: "absolute",
+  borderColor : "blue"
 };
 
 function ExpandTable() {
@@ -43,49 +46,53 @@ function ExpandTable() {
   const handleTitleClick = (index: number, image: string | null) => {
     setOpen((prevOpen) => ({
       index: prevOpen.index === index ? -1 : index,
-      image: prevOpen.index === index ? null : image,
+      // image: prevOpen.index === index ? null : image,
+      image : null,
     }));
   };
 
   return (
-    <Box sx={{ maxWidth: "100%" }}>
-      <Typography
-        variant="h3"
-        component="h2"
-        gutterBottom
-        sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          marginLeft: "25rem",
-          fontFamily: "Inter', sans-serif",
-        }}
-      >
-        Features in Focus
-      </Typography>
-      <Typography
-        variant="body1"
-        sx={{
-          maxWidth: 500,
-          textAlign: "center",
-          marginBottom: 2,
-          marginLeft: "25rem",
-          fontFamily: "'Inter', sans-serif",
-        }}
-      >
-        Our features are designed to make your community living experience more
-        convenient, secure, and connected.
-      </Typography>
+    <Box sx={{ width: "100%" , marginTop:"35px"}}>
+        <Box sx = {{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
+          <Typography
+            variant="h3"
+            sx={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            Features in Focus
+          </Typography>
+
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontFamily: "'Inter', sans-serif",
+              width : "50%",
+              paddingTop:"10px",
+            }}
+          >
+            Our features are designed to make your community living experience more
+            convenient, secure, and connected.
+          </Typography>
+        </Box>
+
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ width: "35%" }}>
+       
+        <Box sx={{ width: "50%" }}>
           <TableContainer
-            component={Paper}
-            sx={{ ...tableContainerSx, backgroundColor: "#EAEAEA" }}
+            // component={Paper}
+            sx={{ ...tableContainerSx, backgroundColor: "#fcfcfc" }}
           >
             <Table>
               <TableHead></TableHead>
               <TableBody>
                 {featureItems.map((item, index) => (
+
                   <React.Fragment key={item.title}>
+
+                    {/* First Row */}
                     <TableRow>
                       <TableCell>
                         <IconButton
@@ -102,22 +109,26 @@ function ExpandTable() {
                           )}
                         </IconButton>
                       </TableCell>
+
                       <TableCell>
                         <Typography
                           variant="body1"
-                          onClick={() =>
-                            handleTitleClick(index, item.image ?? null)
-                          }
+                          // onClick={() =>
+                          //   handleTitleClick(index, item.image ?? null)
+                          // }
                           style={{
                             cursor: "pointer",
-                            fontFamily: "'DM Serif Display', serif",
+                            fontFamily: "'Inter', sans-serif",
                             fontWeight: "bold",
+                            textAlign:"left"
                           }}
                         >
                           {item.title}
                         </Typography>
                       </TableCell>
                     </TableRow>
+
+                    {/* Second Row */}
                     <TableRow>
                       <TableCell
                         colSpan={2}
@@ -136,8 +147,10 @@ function ExpandTable() {
                               textAlign: "left",
                               alignItems: "left",
                               fontSize: 18,
-                              fontFamily: "'DM Serif Display', serif",
                               borderRadius: 3,
+                              padding : "10px",
+                              fontFamily: "'Inter', sans-serif",
+                              color : ""
                             }}
                           >
                             {item.content}
@@ -151,40 +164,10 @@ function ExpandTable() {
             </Table>
           </TableContainer>
         </Box>
-        <Box sx={{ width: "30%" }}>
-          <TableContainer
-            component={Paper}
-            sx={{
-              marginLeft: "10rem",
-              marginTop: "2rem",
-              borderRadius: 6,
-              boxShadow: "0px 0px 20px 2px rgba(0,0,0,0.5)",
-              transition: "box-shadow 0.3s",
-              "&:hover": { boxShadow: "0px 0px 30px 5px rgba(0,0,0,0.7)" },
-            }}
-          >
-            {open.image && (
-              <Box
-                sx={{
-                  textAlign: "center",
-                  marginTop: "20px",
-                  overflow: "hidden",
-                }}
-              >
-                <img
-                  src={open.image}
-                  alt="Feature Image"
-                  style={{
-                    width: "100%",
-                    maxWidth: "600px",
-                    height: "18rem",
-                    marginRight: "9rem",
-                    borderRadius: 6,
-                  }} // Adjust maxWidth and width as needed
-                />
-              </Box>
-            )}
-          </TableContainer>
+
+
+        <Box sx={{ width: "100%" }}>
+            <img src = {HouseImage} />
         </Box>
       </Box>
     </Box>
@@ -194,43 +177,46 @@ function ExpandTable() {
 const PageFeatures: React.FC = () => {
   return (
     <>
-      <BackgroundImage
-        imageUrl={backgroundImage}
-        headerText="Experience community living at its best"
-      >
-        <Button variant="active" className="scale-150" href="/signup">
-          <p className="text-accent">Join Us</p>
-        </Button>
-        <Button className="scale-150" href="/signup">
-          Log In
-        </Button>
-      </BackgroundImage>
-      <Container
-        maxWidth="xl"
-        sx={{
-          backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          display: "flex",
-          textAlign: "center",
-        }}
-      >
-        <Testimonials />
-      </Container>
-      <Container
-        maxWidth="xl"
-        sx={{
-          backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          display: "flex",
-          textAlign: "center",
-        }}
-      >
-        <ExpandTable />
-      </Container>
+      <NavBar />
+        <BackgroundImage
+          imageUrl={backgroundImage}
+          headerText="Experience community living at its best"
+        >
+          <Button variant="active" className="scale-150" href="/signup">
+            <p className="text-accent">Join Us</p>
+          </Button>
+          <Button className="scale-150" href="/signup">
+            Log In
+          </Button>
+        </BackgroundImage>
+      
+        <Container
+          maxWidth="xl"
+          sx={{
+           // backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100vh",
+            display: "flex",
+            textAlign: "center",
+          }}
+        >
+          <ExpandTable />
+        </Container>
+
+        <Container
+          maxWidth="xl"
+          sx={{
+            // backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100vh",
+            display: "flex",
+            textAlign: "center",
+          }}
+        >
+          <Testimonials />
+        </Container>
       <Footer />
     </>
   );

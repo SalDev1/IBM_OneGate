@@ -10,7 +10,6 @@ import testimonials from '../data/testimonials';
 // import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 // import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-
 const TestimonialsContainer = styled('div')({
   display: 'flex',
   overflowX: 'auto',
@@ -63,7 +62,7 @@ export default function Testimonials() {
         Testimonials
       </Typography>
 
-      <TestimonialsContainer ref={testimonialsRef}>
+      <TestimonialsContainer ref={testimonialsRef} sx = {{overflow:"hidden"}}>
         {testimonials.map((testimonial, index) => (
           <Card key={index} sx={{ maxWidth: 345, height: '14rem', transition: 'transform 0.3s ease', '&:hover': { transform: 'scale(1.05)' } }}>
             <CardContent>
