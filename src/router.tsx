@@ -7,18 +7,22 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Forget from "./pages/Forget"
 import DashBoard from "./pages/Dashboard";
+import AboutUs from "./components/About";
 
 export default function AppRoute() {
   return (
-    <AppShell>
-      <Routes>
-        <Route path="/" element={<PageFeatures />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/forget-password" element={<Forget />} />
-        <Route path="/dashboard" element={<DashBoard />}/>
-      </Routes>
-    </AppShell>
+    <>
+      <AppShell>
+        <Routes>
+          <Route path="/" element={<PageFeatures />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/forget-password" element={<Forget />} />
+          <Route path = "/dashboard" element={<DashBoard />}/>
+        </Routes>
+      </AppShell>
+    </>
   );
 }

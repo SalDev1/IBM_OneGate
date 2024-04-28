@@ -1,6 +1,7 @@
 import { Box, AppBar, Toolbar, IconButton } from "@mui/material";
 import Logo from "../assets/logo.svg";
 import Button from "./button";
+import { useParams } from "react-router-dom";
 
 type ThemedAppBarProps = {
   title: string;
@@ -32,6 +33,7 @@ const ThemedAppBar: React.FC<ThemedAppBarProps> = ({
   centerItems,
   transparent,
 }) => {
+
   const containerStyles =
     "top-0 p-4 z-10 w-full grid sm:grid-cols-2 md:grid-cols-3 grid-rows-1 " +
     (transparent
