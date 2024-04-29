@@ -17,7 +17,7 @@ const DNavBar : FC<any> = () => {
         <Toolbar>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            OneGate
+            Tower-01
           </Typography>
 
           <Button color="inherit" sx={{ fontSize : '18px' , display:{xs:'none', md:'flex'} , textAlign:'center'}}>

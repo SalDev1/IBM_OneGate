@@ -7,6 +7,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Forget from "./pages/Forget"
 import DashBoard from "./pages/Dashboard";
+import Amenity from "./pages/Amenity";
+import DSideBar from "./components/DSideBar";
 
 export default function AppRoute() {
   return (
@@ -18,6 +20,7 @@ export default function AppRoute() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forget-password" element={<Forget />} />
         <Route path="/dashboard" element={<DashBoard />}/>
+        <Route path="/amenities/book-amenity/*" element={<Amenity />}/>
       </Routes>
     </AppShell>
   );
