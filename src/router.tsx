@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import PageFeatures from "./pages/features";
 import Contact from "./pages/contact";
@@ -8,7 +8,6 @@ import SignUp from "./pages/SignUp";
 import Forget from "./pages/Forget"
 import DashBoard from "./pages/Dashboard";
 import Amenity from "./pages/Amenity";
-import DSideBar from "./components/DSideBar";
 
 export default function AppRoute() {
   return (
