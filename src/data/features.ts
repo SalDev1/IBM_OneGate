@@ -16,12 +16,6 @@ const featureItems: Feature[] = [
     image: amenities, // Or provide null if no image is available
   },
   {
-    title: "Newsletter",
-    content:
-      "Stay updated with the latest community news, events, and announcements delivered directly to your inbox.",
-    image: newsLetter,
-  },
-  {
     title: "HelpDesk",
     content:
       "Efficient ticket management and resolution for streamlined customer support.",

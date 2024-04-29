@@ -49,7 +49,6 @@ export default function SignIn() {
     {/* <Grid sx={{backgroundImage:`url($bg1)`, backgroundColor:blue}}> */}
     <Grid style={{margin:"40px"}}>
     <Paper elevation={9} style={paperStyle} sx={{borderRadius: '13px'}}>
-
       <Box
         sx={{
           my: 5,
