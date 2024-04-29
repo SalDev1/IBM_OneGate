@@ -54,3 +54,24 @@ button,
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
 }
+
+
+.disabled-link {
+    pointer-events: none;
+  }
+
+  .MuiPickersCalendarHeader-root.css-1aqny2q-MuiPickersCalendarHeader-root{
+    background-color: rgb(184, 184, 182);
+    min-height: 50px;
+
+  }
+
+  .css-83f8i4-MuiDateCalendar-root{
+    width: 25rem;
+  }
+  .css-i5q14k-MuiDayCalendar-header {
+    justify-content:space-evenly;
+  }
+  .css-flbe84-MuiDayCalendar-weekContainer {
+    justify-content: space-evenly;
+  }
