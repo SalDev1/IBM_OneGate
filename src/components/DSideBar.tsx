@@ -18,7 +18,6 @@ const DSideBar: FC<any> = () => {
                 HelpDesk
             </Link> 
         </Typography>
-      </Box>
    </>
   )
 }

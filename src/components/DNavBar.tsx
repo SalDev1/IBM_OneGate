@@ -16,9 +16,10 @@ const DNavBar : FC<any> = () => {
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" sx = {{backgroundColor:"#001aff"}}>
         <Toolbar>
-
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 , display : "flex", alignItems : "center" , justifyContent:"start"}}>
             <img src = {Logo} width={70} height={70}/> OneGate
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Tower-01
           </Typography>
 
           <Button color="inherit" sx={{ fontSize : '18px' , display:{xs:'none', md:'flex'} , textAlign:'center'}}>
