@@ -4,6 +4,7 @@ import { IoMdMenu } from "react-icons/io";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { Box, Button, IconButton, SwipeableDrawer, Toolbar, Typography } from "@mui/material";
 import BottomDraw from "./BottomDraw";
+import Logo from "../assets/logo.svg";
 
 const DNavBar : FC<any> = () => {
    const [open, setOpen] = useState(false);
@@ -13,11 +14,11 @@ const DNavBar : FC<any> = () => {
    
   return (
     <Box sx={{ flexGrow: 1}}>
-      <AppBar position="static">
+      <AppBar position="static" sx = {{backgroundColor:"#001aff"}}>
         <Toolbar>
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            OneGate
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 , display : "flex", alignItems : "center" , justifyContent:"start"}}>
+            <img src = {Logo} width={70} height={70}/> OneGate
           </Typography>
 
           <Button color="inherit" sx={{ fontSize : '18px' , display:{xs:'none', md:'flex'} , textAlign:'center'}}>
