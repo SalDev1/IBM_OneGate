@@ -6,13 +6,18 @@ import { Link } from "react-router-dom";
 const DSideBar: FC<any> = () => {
   return (
    <>
-      <Box sx = {{width : "250px", height:"100vh", backgroundColor:"#1976D2", color : 'white', display:{xs:"none",md:"block"}}}>
-      <Link to="/amenities/book-amenity">
-        <Typography sx = {{p : 2 , ":hover":{backgroundColor : "#165ea6"}, cursor:'pointer'}}>Amenities</Typography>
-      </Link>
-        
-        <Typography sx = {{p : 2 , ":hover":{backgroundColor : "#165ea6"}, cursor:'pointer'}}>Help Desk</Typography>
-      </Box>
+      <Box sx = {{width : "250px", height:"100vh", backgroundColor:"#fafafa", color : '#6978ff', display:{xs:"none",md:"block"} , borderRight:"1px solid #f0f0f0", fontFamily: "'Inter', sans-serif"}}>
+        <Typography sx = {{p : 2 , ":hover":{backgroundColor : "#001aff" , color : "white"}, cursor:'pointer'}}>
+            <Link to="/dashboard/amenities">
+                Amenities
+            </Link> 
+        </Typography>
+
+        <Typography sx = {{p : 2 , ":hover":{backgroundColor : "#001aff" , color : "white"}, cursor:'pointer'}}>
+            <Link to="/dashboard/helpdesk">
+                HelpDesk
+            </Link> 
+        </Typography>
    </>
   )
 }
