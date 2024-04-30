@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
       <Container sx={{ py: 15 }}>
         <div className="border-slate-200 shadow-xl max-w-4xl mx-auto rounded-xl overflow-hidden border grid sm:grid-rows-2 sm:grid-cols-1 md:grid-rows-1 md:grid-cols-2">
           <img
-            src="https://unsplash.com/photos/4xe-yVFJCvw/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTV8fHRhbGt8ZW58MHx8fHwxNzEzOTYxNDI2fDA&force=true&w=2400"
+            src="https://unsplash.com/photos/4xe-yVFJCvw/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTV8fHRhbGt8ZW58MHx8fHwxNzEzOTYxNDI2fDA&force=true&w=800"
             className="bg-black w-full h-full aspect-video md:aspect-square object-cover"
           ></img>
           <Grid p={4} container justifyContent="center">
@@ -71,7 +71,11 @@ const Contact: React.FC = () => {
                   <Grid
                     item
                     xs={12}
-                    sx={{ pt: 1, display: "flex", flexDirection: "row-reverse" }}
+                    sx={{
+                      pt: 1,
+                      display: "flex",
+                      flexDirection: "row-reverse",
+                    }}
                   >
                     <button className="primary sm:flex-grow-1 md:flex-grow-0">
                       Submit
