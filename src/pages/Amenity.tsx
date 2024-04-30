@@ -5,7 +5,6 @@ import AmenityTime from "./AmenityTime";
 import DSideBar from "../components/DSideBar";
 
 export default function Amenity() {
-    
   return (
     <div>  
         <Routes>

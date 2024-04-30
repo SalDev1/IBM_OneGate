@@ -23,7 +23,7 @@ const DSideBar: FC<any> = () => {
           cursor: "pointer",
         }}
       >
-        <Link to="/dashboard/amenities">Amenities</Link>
+        <Link to="/dashboard/amenities/book-amenity/">Amenities</Link>
       </Typography>
 
       <Typography
