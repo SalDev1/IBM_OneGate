@@ -3,7 +3,6 @@ import {
   Box,
   Collapse,
   IconButton,
-  Paper,
   SxProps,
   Table,
   TableBody,
@@ -17,7 +16,6 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import backgroundImage from "../assets/building.jpg";
-import gray from "../assets/gray.jpg";
 import Footer from "../components/footer";
 import Testimonials from "../components/testimonials";
 import featureItems from "../data/features";
@@ -33,8 +31,7 @@ const tableContainerSx: SxProps = {
   marginTop: 4,
   borderRadius: 6,
   overflowX: "auto",
-   // position: "absolute",
-  borderColor : "blue"
+  borderColor: "blue",
 };
 
 function ExpandTable() {
@@ -47,39 +44,45 @@ function ExpandTable() {
     setOpen((prevOpen) => ({
       index: prevOpen.index === index ? -1 : index,
       // image: prevOpen.index === index ? null : image,
-      image : null,
+      image: null,
     }));
   };
 
   return (
-    <Box sx={{ width: "100%" , marginTop:"35px"}}>
-        <Box sx = {{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-          <Typography
-            variant="h3"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            Features in Focus
-          </Typography>
+    <Box sx={{ width: "100%", marginTop: "35px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          Features in Focus
+        </Typography>
 
-          <Typography
-            sx={{
-              textAlign: "center",
-              fontFamily: "'Inter', sans-serif",
-              width : "50%",
-              paddingTop:"10px",
-            }}
-          >
-            Our features are designed to make your community living experience more
-            convenient, secure, and connected.
-          </Typography>
-        </Box>
+        <Typography
+          sx={{
+            textAlign: "center",
+            fontFamily: "'Inter', sans-serif",
+            width: "50%",
+            paddingTop: "10px",
+          }}
+        >
+          Our features are designed to make your community living experience
+          more convenient, secure, and connected.
+        </Typography>
+      </Box>
 
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-       
         <Box sx={{ width: "50%" }}>
           <TableContainer
             // component={Paper}
@@ -89,9 +92,7 @@ function ExpandTable() {
               <TableHead></TableHead>
               <TableBody>
                 {featureItems.map((item, index) => (
-
                   <React.Fragment key={item.title}>
-
                     {/* First Row */}
                     <TableRow>
                       <TableCell>
@@ -120,7 +121,7 @@ function ExpandTable() {
                             cursor: "pointer",
                             fontFamily: "'Inter', sans-serif",
                             fontWeight: "bold",
-                            textAlign:"left"
+                            textAlign: "left",
                           }}
                         >
                           {item.title}
@@ -148,9 +149,9 @@ function ExpandTable() {
                               alignItems: "left",
                               fontSize: 18,
                               borderRadius: 3,
-                              padding : "10px",
+                              padding: "10px",
                               fontFamily: "'Inter', sans-serif",
-                              color : ""
+                              color: "",
                             }}
                           >
                             {item.content}
@@ -165,9 +166,8 @@ function ExpandTable() {
           </TableContainer>
         </Box>
 
-
         <Box sx={{ width: "100%" }}>
-            <img src = {HouseImage} />
+          <img src={HouseImage} />
         </Box>
       </Box>
     </Box>
@@ -178,45 +178,45 @@ const PageFeatures: React.FC = () => {
   return (
     <>
       <NavBar />
-        <BackgroundImage
-          imageUrl={backgroundImage}
-          headerText="Experience community living at its best"
-        >
+      <BackgroundImage
+        imageUrl={backgroundImage}
+        headerText="Experience community living at its best"
+      >
+        <div className="flex gap-16">
           <Button variant="active" className="scale-150" href="/signup">
             <p className="text-accent">Join Us</p>
           </Button>
-          <Button className="scale-150" href="/signup">
+          <Button variant="lightBorder" className="scale-150" href="/signup">
             Log In
           </Button>
-        </BackgroundImage>
-      
-        <Container
-          maxWidth="xl"
-          sx={{
-           // backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100vh",
-            display: "flex",
-            textAlign: "center",
-          }}
-        >
-          <ExpandTable />
-        </Container>
+        </div>
+      </BackgroundImage>
 
-        <Container
-          maxWidth="xl"
-          sx={{
-            // backgroundImage: `url(${gray})`, // Corrected syntax to set the background image
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100vh",
-            display: "flex",
-            textAlign: "center",
-          }}
-        >
-          <Testimonials />
-        </Container>
+      <Container
+        maxWidth="xl"
+        sx={{
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          display: "flex",
+          textAlign: "center",
+        }}
+      >
+        <ExpandTable />
+      </Container>
+
+      <Container
+        maxWidth="xl"
+        sx={{
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          display: "flex",
+          textAlign: "center",
+        }}
+      >
+        <Testimonials />
+      </Container>
       <Footer />
     </>
   );
