@@ -11,7 +11,6 @@ type BackgroundImageProps = {
 const BackgroundImage: React.FC<BackgroundImageProps> = ({
   imageUrl,
   headerText,
-  darken,
   children,
 }) => {
   return (
@@ -23,7 +22,7 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({
           className="w-full h-full object-cover"
         />
       </Background>
-      <div style={{ height: "100vh" }}>
+      <div className="flex flex-col h-screen w-full">
         <Container
           maxWidth="md"
           sx={{
@@ -34,6 +33,7 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({
             textAlign: "center",
             color: "white",
             height: "100%",
+            width: "100%",
             position: "relative",
             zIndex: 1,
           }}
@@ -51,7 +51,7 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({
           >
             {headerText}
           </Typography>
-          {children}
+          <div className="flex gap-4 w-full justify-center">{children}</div>
         </Container>
       </div>
     </Parallax>

@@ -14,14 +14,14 @@
 
 button,
 .button {
-  @apply flex p-1 items-center md:px-6 font-medium;
+  @apply flex p-2 items-center px-6 font-medium;
   @apply border border-slate-800/20 hover:bg-slate-800/10;
   @apply rounded-full transition-all;
   &.primary {
     @apply text-white bg-[#323EDD];
   }
   &.icon {
-    @apply border-none md:px-2;
+    @apply border-none px-2;
   }
   &.lightBorder {
     @apply border-white/30;
@@ -55,23 +55,21 @@ button,
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
 }
 
-
 .disabled-link {
-    pointer-events: none;
-  }
+  pointer-events: none;
+}
 
-  .MuiPickersCalendarHeader-root.css-1aqny2q-MuiPickersCalendarHeader-root{
-    background-color: rgb(184, 184, 182);
-    min-height: 50px;
+.MuiPickersCalendarHeader-root.css-1aqny2q-MuiPickersCalendarHeader-root {
+  background-color: rgb(184, 184, 182);
+  min-height: 50px;
+}
 
-  }
-
-  .css-83f8i4-MuiDateCalendar-root{
-    width: 25rem;
-  }
-  .css-i5q14k-MuiDayCalendar-header {
-    justify-content:space-evenly;
-  }
-  .css-flbe84-MuiDayCalendar-weekContainer {
-    justify-content: space-evenly;
-  }
+.css-83f8i4-MuiDateCalendar-root {
+  width: 25rem;
+}
+.css-i5q14k-MuiDayCalendar-header {
+  justify-content: space-evenly;
+}
+.css-flbe84-MuiDayCalendar-weekContainer {
+  justify-content: space-evenly;
+}

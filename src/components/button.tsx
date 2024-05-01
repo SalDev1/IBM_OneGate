@@ -8,7 +8,13 @@ type ButtonProps = {
   indicateActive?: boolean;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-type ButtonVariant = "primary" | "icon" | "secondary" | "inactive" | "active";
+type ButtonVariant =
+  | "primary"
+  | "icon"
+  | "secondary"
+  | "inactive"
+  | "active"
+  | "lightBorder";
 
 export default function Button({
   variant,
