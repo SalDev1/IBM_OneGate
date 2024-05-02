@@ -17,23 +17,23 @@ const NavBar = () => {
 
   const leadingItems = [
     <Button variant="icon" icon={<img src={Logo} className="h-8" />}>
-      <p className={`text-xl ${textColor}`}>{"OneGate"}</p>
+      <p className={`text-xl hidden md:visible ${textColor}`}>OneGate</p>
     </Button>,
   ];
 
+  const navLinks = links.map((link, index) => (
+    <Button variant="icon" href={link.href} key={index}>
+      {link.label}
+    </Button>
+  ));
+
   const trailingItems = [
-    <div className="hidden md:flex gap-8 mx-8">
-      {links.map((link, index) => (
-        <Button variant="icon" href={link.href} key={index}>
-          {link.label}
-        </Button>
-      ))}
-    </div>,
+    <div className="hidden md:flex gap-8 mx-8">{navLinks}</div>,
     <Button href="/login" variant={transparent ? "lightBorder" : undefined}>
-      Login
+      <p className="">Login</p>
     </Button>,
     <Button href="/login" variant="primary" className="ml-4">
-      Sign Up
+      <p className="text-nowrap">Sign Up</p>
     </Button>,
   ];
 
@@ -42,7 +42,9 @@ const NavBar = () => {
       transparent={transparent}
       leading={leadingItems}
       trailing={trailingItems}
-    ></Header>
+    >
+      <div className="md:hidden flex flex-col gap-4">{navLinks}</div>
+    </Header>
   );
 };
 

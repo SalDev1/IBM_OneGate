@@ -6,7 +6,7 @@ export default function PageContact() {
   return (
     <>
       <NavBar />
-      <Container sx={{ py: 10 }}>
+      <Container sx={{ py: { xs: 2, md: 4 } }}>
         <div className="border-slate-200 shadow-xl max-w-4xl mx-auto rounded-xl overflow-hidden border grid sm:grid-rows-2 sm:grid-cols-1 md:grid-rows-1 md:grid-cols-2">
           <img
             src="https://unsplash.com/photos/4xe-yVFJCvw/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTV8fHRhbGt8ZW58MHx8fHwxNzEzOTYxNDI2fDA&force=true&w=800"

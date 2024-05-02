@@ -26,8 +26,7 @@ const AboutUs: React.FC = () => {
               fontWeight: "700",
             }}
           >
-            {" "}
-            About Us{" "}
+            About Us
           </Typography>
 
           <Typography

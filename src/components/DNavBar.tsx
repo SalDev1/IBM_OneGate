@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import { IoMdMenu } from "react-icons/io";
 import { RiAccountCircleFill } from "react-icons/ri";
