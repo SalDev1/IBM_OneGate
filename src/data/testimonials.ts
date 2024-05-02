@@ -1,34 +1,52 @@
 import Testimonial from "../types/testimonial";
+import Image1 from "../assets/avatar_1.jpg";
+import Image2 from "../assets/avatar_2.jpg";
+import Image3 from "../assets/avatar_3.jpg";
+import Image4 from "../assets/avatar_4.jpg";
+import Image5 from "../assets/avatar_5.jpg";
+import Image6 from "../assets/avatar_6.jpg";
 
 export default [
   {
-    avatar: "S",
+    avatar: Image1,
     rating: 5,
+    name: "Olivia Williams",
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "OneGate has truly streamlined our operations. From managing dues to organizing events, it's a one-stop solution for all our needs.",
   },
   {
-    avatar: "M",
-    rating: 4,
+    avatar: Image2,
+    rating: 4.5,
+    name : "Lucas Nguyen",
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "The user interface is clean and user-friendly, making it easy for everyone in our community to navigate. Plus, the customer support is outstanding!",
   },
-  // {
-  //   avatar: "H",
-  //   rating: 3.5,
-  //   review:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  // },
-  // {
-  //   avatar: "H",
-  //   rating: 3.5,
-  //   review:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  // },
-  // {
-  //   avatar: "H",
-  //   rating: 3.5,
-  //   review:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  // },
+  {
+    avatar: Image3,
+    rating: 4,
+    name : "Xavier Patel",
+    review:
+      "Communication between residents and the management team has never been smoother. We can easily share important announcements, schedule maintenance requests and many more.",
+  },
+  {
+    avatar: Image4,
+    rating: 4,
+    name : "Ethan Gonzales",
+    review:
+      "As a board member of our society, I can't imagine managing our community without this system. It has simplified our administrative tasks, saving us time and reducing the margin for error.",
+  },
+  {
+    avatar: Image5,
+    rating: 4.5,
+    name: "Sophia Martinez",
+    review:
+      "This system has brought us into the digital age, allowing us to efficiently allocate resources, track usage, and enhance the overall resident experience. It's like having a virtual community manager at our fingertips!",
+  },
+  {
+    avatar: Image6,
+    rating: 4,
+    name : "Isabella Jenkins",
+    review:
+      "This software has improved transparency and accountability across the board.Whether it's tracking facility bookings or raising helpdesk tickets, everything is now easily accessible. Kudos to the team behind this fantastic tool!",
+  },
 ] as Testimonial[];
