@@ -9,7 +9,6 @@ function Footer() {
         color: "white",
         padding: "2rem 0",
         textAlign: "center",
-        marginTop: "2rem",
       }}
     >
       <Typography variant="body1">

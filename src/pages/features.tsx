@@ -73,7 +73,7 @@ function ExpandTable() {
           sx={{
             textAlign: "center",
             fontFamily: "'Inter', sans-serif",
-            width: "50%",
+            width: {xs:"100%",md:"65%"},
             paddingTop: "10px",
           }}
         >
@@ -82,8 +82,8 @@ function ExpandTable() {
         </Typography>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ width: "50%" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" , flexDirection:{xs:"column",md:"row"}}}>
+        <Box sx={{ width: {xs:"100%" , md : "70%"} }}>
           <TableContainer
             // component={Paper}
             sx={{ ...tableContainerSx, backgroundColor: "#fcfcfc" }}
@@ -195,9 +195,10 @@ const PageFeatures: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
+          fontFamily: "'Inter', sans-serif",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "100vh",
+          height: "fit-content",
           display: "flex",
           textAlign: "center",
         }}
@@ -208,11 +209,14 @@ const PageFeatures: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
+          fontFamily: "'Inter', sans-serif",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "100vh",
+          height: "fit-content",
           display: "flex",
           textAlign: "center",
+          backgroundColor:"#323EDD",
+          padding : "0px 0px 15px 0px"
         }}
       >
         <Testimonials />
