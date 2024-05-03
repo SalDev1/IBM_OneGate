@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bg1 from '../assets/bg1.jpg'
 import { blue } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
+import { Container } from '@mui/material';
 
 function Copyright(props: any) {
   return (
@@ -31,9 +33,19 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = () => {};
-  const paperStyle={padding :20,height:'70vh',width:320, margin:"20px auto", overflow:"auto"}
-  document.body.style.overflow = 'hidden'
+  const [email, setEmail] = React.useState<String>("");
+  const [password, setPassword] = React.useState<String>("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    // TODO :- HANDLING REDUX LOGIC.
+    if(email != "" && password != "") {
+      console.log(email);
+      console.log(password);
+      navigate("/dashboard");
+    } 
+  };
 
   return (
     <Grid 
@@ -48,7 +60,8 @@ export default function SignIn() {
     }}>
     {/* <Grid sx={{backgroundImage:`url($bg1)`, backgroundColor:blue}}> */}
     <Grid style={{margin:"40px"}}>
-    <Paper elevation={9} style={paperStyle} sx={{borderRadius: '13px'}}>
+
+    <Container sx = {{backgroundColor:"white" , padding : "35px 20px", borderRadius : "10px" , width:{sm:"60%" , md : "45%"}}}>
       <Box
         sx={{
           my: 5,
@@ -62,9 +75,10 @@ export default function SignIn() {
           {/* <LockOutlinedIcon /> */}
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Login
         </Typography>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -76,7 +90,9 @@ export default function SignIn() {
             variant='outlined'
             size='small'
             autoFocus
+            onChange={(e) => setEmail(e.target.value)}
           />
+        
           <TextField
             required
             fullWidth
@@ -88,20 +104,18 @@ export default function SignIn() {
             variant='outlined'
             size='small'
             sx = {{height:'10px', my:1 }}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-            sx = {{mt:3.5}}
-          />
+   
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mb: 2.5, py: '5px', bgcolor : '#0005f1' }}
+            sx={{ mb: 2.5, py: '5px', bgcolor : '#0005f1' , mt : 4}}
           >
             Sign In
           </Button>
+          
           <Grid container>
             <Grid item xs>
               <Link href="/forget-password" variant="body2" >
@@ -115,15 +129,13 @@ export default function SignIn() {
             </Grid>
           </Grid>
 
-        </Box>
-
-      </Box>
-      
-      </Paper>
+          </Box>
+         </Box>
+        </Container>
       </Grid>
+
       <Copyright sx={{ mt: 5 }} />
-             </Grid>
-             
+    </Grid>
   );
 }
 
