@@ -14,28 +14,47 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bg1 from '../assets/bg1.jpg'
 import { blue } from '@mui/material/colors';
-import { Link as RouterLink} from 'react-router-dom'
+import { Link as RouterLink, useNavigate} from 'react-router-dom'
+import { Container } from '@mui/material';
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {/* {'Copyright © '}
+      {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'} */}
+      {'.'}
     </Typography>
   );
 }
-
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
-
 export default function SignUp() {
-  const handleSubmit = () => {};
-  const paperStyle={padding :20,height:'87vh',width:320, margin:"20px auto" , overflow:'auto'}
-  document.body.style.overflow = 'hidden'
+
+  const [firstName , setFirstName] = React.useState<String>("");
+  const [lastName , setLastName] = React.useState<String>("");
+  const [address , setAddress] = React.useState<String>("");
+  const [phoneNo , setPhoneNo] = React.useState<String>("");
+  const [email , setEmail] = React.useState<String>("");
+  const [password , setPassword] = React.useState<String>("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    // TODO: REDUX-LOGIC.
+    if(firstName != "" && lastName != "" && address != "" && phoneNo != "" && email != "" && password != "") {
+      console.log(firstName);
+      console.log(lastName);
+      console.log(address);
+      console.log(phoneNo);
+      console.log(email);
+      console.log(password);
+
+      navigate("/login");
+    }
+  };
 
   return (
     <Grid 
@@ -51,8 +70,7 @@ export default function SignUp() {
     }}>
     {/* <Grid sx={{backgroundImage:`url($bg1)`, backgroundColor:blue}}> */}
     <Grid style={{margin:"20px"}}>
-    <Paper elevation={9} style={paperStyle} >
-
+    <Container sx = {{backgroundColor:"white" , padding : "35px 20px", borderRadius : "10px" , width:{sm:"60%" , md : "45%"}}}>
       <Box
         sx={{
           my: 1,
@@ -68,26 +86,44 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
+
         <Grid container justifyContent="center">
             <Grid item sx={{textAlign: 'center'}}>
-              <Link href="/" variant="body2" >
+              <Link href="/login" variant="body2" >
                 {"Already have an account ?"}
               </Link>
             </Grid>
           </Grid>
         
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Full Name"
-            name="name"
-            variant='outlined'
-            size='small'
-            autoFocus
-          />
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+
+        <Box sx = {{display:"flex",justifyContent:"center",alignContent:"center" , width:"100%"}}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="First Name"
+              name="name"
+              variant='outlined'
+              size='small'
+              autoFocus
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Last Name"
+              name="name"
+              variant='outlined'
+              size='small'
+              autoFocus
+              sx = {{marginLeft : "5px"}}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+        </Box>
           <TextField
             margin="normal"
             required
@@ -99,6 +135,7 @@ export default function SignUp() {
             variant='outlined'
             size='small'
             autoFocus
+            onChange={(e) => setAddress(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -111,6 +148,7 @@ export default function SignUp() {
             variant='outlined'
             size='small'
             autoFocus
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <TextField
@@ -123,6 +161,7 @@ export default function SignUp() {
             variant='outlined'
             size='small'
             autoFocus
+            onChange={(e) => setPhoneNo(e.target.value)}
           />
 
           <TextField
@@ -136,6 +175,7 @@ export default function SignUp() {
             variant='outlined'
             size='small'
             sx = {{height:'10px', mt:2 }}
+            onChange={(e) => setPassword(e.target.value)}
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -149,16 +189,13 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          
-          
         </Box>
-
       </Box>
       
-      </Paper>
+      </Container>
       </Grid>
       <Copyright sx={{ mt: 8 }} />
-             </Grid>
+    </Grid>
   );
 }
 
