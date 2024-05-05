@@ -12,12 +12,27 @@ import {
 import Box from "@mui/material/Box";
 import BottomDraw from "./BottomDraw";
 import Logo from "../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { logout } from "../redux/authSlice";
 
 const DNavBar: FC<any> = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  const logOutHandler = (e:any) => {
+    e.preventDefault();
+
+    dispatch(logout());
+    navigate('/login');
+    localStorage.removeItem('user');
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -34,7 +49,7 @@ const DNavBar: FC<any> = () => {
             }}
           >
             <img src={Logo} width={70} height={70} /> OneGate
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1  , cursor:'pointer'}} onClick = {() => navigate('/dashboard')}>
               Tower-01
             </Typography>
           </Typography>
@@ -46,6 +61,7 @@ const DNavBar: FC<any> = () => {
               display: { xs: "none", md: "flex" },
               textAlign: "center",
             }}
+            onClick={() => navigate('/dashboard/profile')}
           >
             <RiAccountCircleFill size="1.5em" /> Show Profile
           </Button>
@@ -57,6 +73,7 @@ const DNavBar: FC<any> = () => {
               display: { xs: "none", md: "flex" },
               textAlign: "center",
             }}
+            onClick={logOutHandler}
           >
             Logout
           </Button>

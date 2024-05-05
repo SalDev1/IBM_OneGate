@@ -15,6 +15,9 @@ import bg1 from '../assets/bg1.jpg'
 import { blue } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { login, register } from '../redux/authSlice';
+import { AppDispatch } from '../redux/store';
 
 function Copyright(props: any) {
   return (
@@ -36,15 +39,22 @@ export default function SignIn() {
   const [email, setEmail] = React.useState<String>("");
   const [password, setPassword] = React.useState<String>("");
 
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e:any) => {
     // TODO :- HANDLING REDUX LOGIC.
-    if(email != "" && password != "") {
-      console.log(email);
-      console.log(password);
-      navigate("/dashboard");
-    } 
+    e.preventDefault();
+    
+    const userData = {
+      email,
+      password,
+    }
+
+    dispatch(login(userData))
+    .unwrap()
+    .then(() => navigate('/dashboard'))
+    .catch((err) => console.log(err))
   };
 
   return (
