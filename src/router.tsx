@@ -11,6 +11,7 @@ import Amenity from "./pages/Amenity";
 import AboutUs from "./pages/About";
 import HelpDeskPage from "./pages/HelpDeskPage";
 import ProfilePage from "./pages/MyProfile";
+import AmenityTimeSlot from "./pages/AmenitiesTimeSlot";
 
 export default function AppRoute() {
   return (
@@ -27,6 +28,11 @@ export default function AppRoute() {
           path="/dashboard/amenities/book-amenity/*"
           element={<Amenity />}
         />
+        <Route
+          path="dashboard/amenities/book-amenity/book-amenity-time"
+          element={<AmenityTimeSlot />}
+        />
+
         <Route path="/dashboard/helpdesk" element={<HelpDeskPage />} />
         <Route path="/dashboard/profile" element={<ProfilePage />} />
       </Routes>
