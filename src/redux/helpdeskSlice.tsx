@@ -20,6 +20,24 @@ export const getAllHelpDeskTickets = createAsyncThunk<any,any>('/helpdesktickets
   }
 })
 
+export const getAllHelpDeskTicketsByAdmin = createAsyncThunk<any,any>("/helpdesktickets/admin" , async(user,thunkAPI) => {
+  try {
+    return await helpDeskService.getAllHelpDeskTicketsByAdmin(user);
+  }
+  catch(error) {
+    return thunkAPI.rejectWithValue(extractErrorMessage(error));
+  }
+});
+
+export const updateHelpDeskTicket = createAsyncThunk<any,any>("/helpdeskticket/update" , async(data,thunkAPI) => {
+  try {
+    return await helpDeskService.updateHelpDeskTicket(data);
+  }
+  catch(error) {
+    return thunkAPI.rejectWithValue(extractErrorMessage(error));
+  }
+});
+
 const initialState = {
   helpDeskTickets : [],
   loading : false
@@ -49,6 +67,26 @@ export const helpDeskSlice = createSlice({
           state.helpDeskTickets = [...state.helpDeskTickets, action.payload];
       })
       .addCase(getAllHelpDeskTickets.rejected , (state) => {
+          state.loading = false;
+      })
+      .addCase(getAllHelpDeskTicketsByAdmin.pending , (state) => {
+        state.loading = true;
+     })
+     .addCase(getAllHelpDeskTicketsByAdmin.fulfilled , (state:any,action) => {
+         state.loading = false;
+         state.helpDeskTickets = [...state.helpDeskTickets, action.payload];
+     })
+     .addCase(getAllHelpDeskTicketsByAdmin.rejected , (state) => {
+         state.loading = false;
+     })
+     .addCase(updateHelpDeskTicket.pending , (state) => {
+         state.loading = true;
+      })
+      .addCase(updateHelpDeskTicket.fulfilled , (state:any,action) => {
+          state.loading = false;
+          //state.helpDeskTickets = [...state.helpDeskTickets, action.payload];
+      })
+      .addCase(updateHelpDeskTicket.rejected , (state) => {
           state.loading = false;
       })
   },

@@ -22,7 +22,7 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
     } catch (error) {
       console.error(error);
       res.status(401);
-      throw new Error("Not Authorozed");
+      throw new Error("Not Authorized");
     }
   }
   if (!token) {
