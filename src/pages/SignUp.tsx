@@ -16,6 +16,9 @@ import bg1 from '../assets/bg1.jpg'
 import { blue } from '@mui/material/colors';
 import { Link as RouterLink, useNavigate} from 'react-router-dom'
 import { Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { register } from '../redux/authSlice';
 
 function Copyright(props: any) {
   return (
@@ -40,21 +43,30 @@ export default function SignUp() {
   const [email , setEmail] = React.useState<String>("");
   const [password , setPassword] = React.useState<String>("");
 
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    // TODO: REDUX-LOGIC.
-    if(firstName != "" && lastName != "" && address != "" && phoneNo != "" && email != "" && password != "") {
-      console.log(firstName);
-      console.log(lastName);
-      console.log(address);
-      console.log(phoneNo);
-      console.log(email);
-      console.log(password);
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
 
-      navigate("/login");
+    // TODO: REDUX-LOGIC.
+    const userData = {
+      firstName,
+      lastName,
+      address,
+      phoneNo,
+      email,
+      password
     }
-  };
+
+    dispatch(register(userData))
+    .unwrap()
+    .then(() => {
+        navigate('/login');
+    }).catch((error) => {
+        console.log(error);
+    })
+  }
 
   return (
     <Grid 

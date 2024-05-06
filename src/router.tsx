@@ -10,6 +10,7 @@ import DashBoard from "./pages/Dashboard";
 import Amenity from "./pages/Amenity";
 import AboutUs from "./pages/About";
 import HelpDeskPage from "./pages/HelpDeskPage";
+import ProfilePage from "./pages/MyProfile";
 
 export default function AppRoute() {
   return (
@@ -27,6 +28,7 @@ export default function AppRoute() {
           element={<Amenity />}
         />
         <Route path="/dashboard/helpdesk" element={<HelpDeskPage />} />
+        <Route path="/dashboard/profile" element={<ProfilePage />} />
       </Routes>
     </AppShell>
   );

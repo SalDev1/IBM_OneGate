@@ -7,13 +7,23 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import HelpDeskFormFields from './HelpDeskFormFields';
 import { useState , useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { addHelpDeskTicket } from '../redux/helpdeskSlice';
 
 const HelpDesk = () => {
   const [complaint , setComplaint] = useState<String>("");
   const [subComplaint , setSubComplaint] = useState<String>("");
   const [currentSubComplaints , setCurrentSubComplaints] = useState<any[]>([]);
   const [description , setDescription] = useState<String>("");
-  
+
+  const getUser : any = localStorage.getItem('user')
+  const user = JSON.parse(getUser);
+
+  console.log(user);
+
+  const dispatch = useDispatch<AppDispatch>();
+
   const steps = ['', '', ''];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -61,11 +71,24 @@ const HelpDesk = () => {
     setActiveStep(0);
   };
 
-  const onSubmiHandler = () => {
-    // REDUX LOGIC.
-    console.log(complaint);
-    console.log(subComplaint);
-    console.log(description);
+  const onSubmiHandler = (e:any) => {
+    e.preventDefault();
+
+    const data = {
+      complaint,
+      subComplaint,
+      description,
+      email : user.email
+    }
+
+    dispatch(addHelpDeskTicket(data))
+      .unwrap()
+      .then(() => {
+        console.log("Successfully Added the Help Desk")
+      })
+      .catch((err) => {
+        console.log(err);
+      })
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   }
