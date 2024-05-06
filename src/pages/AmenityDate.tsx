@@ -9,6 +9,7 @@ import React from "react";
 import axios from "axios";
 
 import {
+  Box,
   Button,
   Card,
   Grid,
@@ -93,8 +94,8 @@ const getBlackoutDates = useCallback(async()=>{
   },[]) 
 
   return (
-    <div style={{ backgroundColor: "#F6F5F2" }}>
-      <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Box style={{ backgroundColor: "#F6F5F2" }}>
+      {/* <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={12}>
           <DNavBar />
         </Grid>
@@ -105,7 +106,7 @@ const getBlackoutDates = useCallback(async()=>{
           {/* <Typography variant="h6" color="grey" display="flex">
         Amenities / Amenity Date
       </Typography> */}
-      <br></br>
+      {/* <br></br>
       <Typography variant="h5" marginLeft="3rem" display="flex">Booking Amenity</Typography>
       <Card sx={{ maxWidth: 1200,margin:5,padding:6}} >
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
@@ -150,7 +151,8 @@ const getBlackoutDates = useCallback(async()=>{
             }}>
             <Link
               to="/dashboard/amenities/book-amenity/book-amenity-time"
-              state={{ amenity, bookingCount, date: value }}
+              state={{ amenity, bookingCount, date: value }} />
+            </Button>
           <br></br>
           <Typography variant="h5" marginLeft="3rem" display="flex">
             Booking Amenity
@@ -234,7 +236,7 @@ const getBlackoutDates = useCallback(async()=>{
             </Grid>
           </Card>
         </Grid>
-      </Grid>
-    </div>
+      </Grid> */}
+    </Box>
   );
 }

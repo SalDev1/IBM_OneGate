@@ -1,5 +1,6 @@
 import User from "../model/userSchema.js";
 import asyncHandler from "express-async-handler";
+import bcrypt from "bcryptjs";
 
 const loginUser = asyncHandler(async (req, res) => {
   let { email, password } = req.body;
@@ -12,6 +13,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
+
     res.status(200).json({
       _id: user._id,
       firstName: user.firstName,
@@ -40,12 +42,15 @@ const registerUser = asyncHandler(async (req, res) => {
     });
   }
 
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
   const user = await User.create({
     firstName,
     lastName,
     address,
     email,
-    password: hashAndSalt(password),
+    password : hashedPassword,
     phoneNo,
   });
 
@@ -60,8 +65,3 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 export { loginUser, registerUser };
-
-async function hashAndSalt(password) {
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-}
