@@ -4,21 +4,21 @@ import cors from "cors";
 import connectDb from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import helpDeskRoutes from "./routes/helpDeskRoutes.js";
-import authMiddleware from "./middlewares/auth.js";
+import amenities from "./routes/amenityRoutes.js";
+import bookings from "./routes/bookingRoutes.js";
 
 const { port } = constants;
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
 app.use("/api/users", userRoutes);
 app.use("/api/helpdesk", helpDeskRoutes);
+app.use("/amenities", amenities);
+app.use("/bookings", bookings);
 
 connectDb();
-
-app.use(authMiddleware);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
