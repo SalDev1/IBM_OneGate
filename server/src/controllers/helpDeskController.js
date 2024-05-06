@@ -31,11 +31,13 @@ const addHelpDeskTicket = asyncHandler(async(req,res) => {
         subComplaint : helpDeskTicket.subComplaint,
         description : helpDeskTicket.description,
         userId  : helpDeskTicket.userId,
+        status : helpDeskTicket.status,
     })
 });
 
 const getAllHelpDeskTicketsByUserId = asyncHandler(async(req,res) => {
     const id = req.params.id;
+
     const userExists = await User.find({id});
     if(!userExists) {
         res.status(500).json({
@@ -48,8 +50,34 @@ const getAllHelpDeskTicketsByUserId = asyncHandler(async(req,res) => {
     });
 })
 
+const getAllHelpDeskTicketsByAdmin = asyncHandler(async(req,res) => {
+    const tickets = await HelpDesk.find();
+    res.status(200).json({
+        tickets
+    })
+})
+
+const updateHelpDeskTicket = asyncHandler(async(req,res) => {
+    const id = req.params.id;
+    const {status} = req.body;
+    const ticket = await HelpDesk.findById(id);
+
+    if(!ticket) {
+        res.status(500).json({
+            msg : "Tickets doesn't exist"
+        })
+    }
+
+    ticket.status = status;
+    await HelpDesk.findByIdAndUpdate(ticket._id , ticket);
+    res.status(200).json({
+        ticket
+    })
+})
 
 export {
     addHelpDeskTicket,
     getAllHelpDeskTicketsByUserId,
+    getAllHelpDeskTicketsByAdmin,
+    updateHelpDeskTicket,
 }

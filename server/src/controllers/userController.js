@@ -19,6 +19,7 @@ const loginUser = asyncHandler(async (req,res) => {
             email : user.email,
             contact : user.phoneNo,
             address : user.address,
+            isAdmin : user.isAdmin,
         })
     } 
 })
