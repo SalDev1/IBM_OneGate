@@ -13,6 +13,8 @@ app.use(cors());
 
 app.use('/api/users', userRoutes);
 app.use('/api/helpdesk', helpDeskRoutes);
+app.use("/amenities", amenities);
+app.use("/bookings", bookings);
 
 connectDb();
 

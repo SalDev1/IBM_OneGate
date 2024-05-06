@@ -209,6 +209,22 @@ export default function AmenitySelect() {
               </Link>
               <br></br>
             </ListItemButton>
+            <ListItemButton>
+              <Link
+                to="book-amenity-date"
+                state={{
+                  amenity: {
+                    id:"6637db46f91470f04c1bc2cb",
+                    name:"Study Room",
+                    description:"Air Conditioned room to study in",
+                    Limit:2
+                  },
+                }}
+              >
+                STUDY ROOM
+              </Link>
+              <br></br>
+            </ListItemButton>
 
             <ListItemButton>
               <Link
