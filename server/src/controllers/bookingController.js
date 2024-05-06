@@ -29,7 +29,6 @@ const getBookedDates = asyncHandler(async (req, res) => {
     let arr = new Array(lastDay).fill(0);
     bookings.forEach((e) => {
       let iDate = e.DateTime.getUTCDate();
-      console.log(e.DateTime, " ", iDate);
       arr[iDate - 1] += e.Count;
       if (arr[iDate - 1] === 12 * limit) {
         booked.push(e.DateTime.toISOString().split("T")[0]);

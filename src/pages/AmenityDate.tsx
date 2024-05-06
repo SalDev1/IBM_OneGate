@@ -4,8 +4,10 @@ import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import React from "react";
+import axios from "axios";
+
 import {
   Button,
   Card,
@@ -18,30 +20,30 @@ import DSideBar from "../components/DSideBar";
 
 export default function AmenityDate() {
   //react code
-  const [blackoutDates, setBlackoutDates] = useState([
-    "2024-04-01",
-    "2024-04-08",
-    "2024-04-13",
-    "2024-04-22"
-])
+const [blackoutDates, setBlackoutDates] = useState<string[]>([])
 const [value, setValue] = useState<Dayjs | null>(blackoutDates.includes((dayjs(new Date())).toISOString().split('T')[0])?null:dayjs(new Date()))
 const [bookingCount, setBookingCount] = useState(1)
 const location = useLocation()
 const {amenity} = location.state
+const [monthYear, setMonthYear] = useState<{month:Number|null,year:Number|null}>({month:Number((dayjs(new Date())).month())+1,year:Number((dayjs(new Date())).year())})
 
 const handleCalendarChange = (newValue:Dayjs) => {
     setValue(newValue)
+    setMonthYear({year:newValue.year(),month:Number(newValue.month())+1})
 }
 
-const handleChange = (event:React.ChangeEvent) => {
-    if(Number((event.target as HTMLInputElement).value)>=1 && Number((event.target as HTMLInputElement).value)<=5){
+const handleChange = async (event:React.ChangeEvent) => {
+    if(Number((event.target as HTMLInputElement).value)>=1 && Number((event.target as HTMLInputElement).value)<=(5<amenity.Limit?5:amenity.Limit)){
         setBookingCount(Number((event.target as HTMLInputElement).value))
-        setBlackoutDates([
-            "2024-04-05",
-            "2024-04-11",
-            "2024-04-18",
-            "2024-04-30"
-        ])
+
+        // setBlackoutDates([
+        //     "2024-04-05",
+        //     "2024-04-11",
+        //     "2024-04-18",
+        //     "2024-04-30"
+        // ])
+      
+        
     }
         
 }
@@ -49,6 +51,11 @@ const handleChange = (event:React.ChangeEvent) => {
 const isDisabled = (d:Dayjs) => {
     d=d.add(1,'day')
     return blackoutDates.includes(d.toISOString().split('T')[0]) || d.isBefore(dayjs(new Date()));
+}
+
+const handleMonthChange = (date:Dayjs) => {
+  setMonthYear({year:date.year(),month:Number(date.month())+1})
+  setValue(null)
 }
 
 useEffect(() => {
@@ -66,6 +73,25 @@ useEffect(()=>{
         setValue(null)
     }
 },[blackoutDates])
+
+useEffect(()=>{
+  getBlackoutDates()
+},[monthYear,bookingCount])
+
+console.log({amenityId:amenity.id,monthNo:monthYear.month,yearNo:monthYear.year})
+
+const getBlackoutDates = useCallback(async()=>{  
+  fetch('http://localhost:4000/bookings/bookedDates',{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({amenityId:amenity.id,monthNo:monthYear.month,yearNo:monthYear.year})
+}).then((res) => {
+  return res.json()
+}).then((data) => {
+  setBlackoutDates(data)
+})
+
+  },[]) 
 
   return (
     <div style={{ backgroundColor: "#F6F5F2" }}>
@@ -111,7 +137,7 @@ useEffect(()=>{
               <DemoContainer components={["DateCalendar", "DateCalendar"]} sx={{alignItems:"center",justifyContent:"center",margin:"auto"}} >
                 <DemoItem sx={{width:"20rem"}}>
                   <DateCalendar shouldDisableDate={isDisabled}
-                   onChange={handleCalendarChange} onMonthChange={()=>setValue(null)}
+                   onChange={handleCalendarChange} onMonthChange={handleMonthChange}
                    sx={{
                     maxWidth:"60rem"
                   }}
@@ -126,7 +152,7 @@ useEffect(()=>{
               float:"inherit"
             }}>
             <Link
-              to="/amenities/book-amenity/book-amenity-time"
+              to="/dashboard/amenities/book-amenity/book-amenity-time"
               state={{ amenity, bookingCount, date: value }}
             >
               Select Timeslot
