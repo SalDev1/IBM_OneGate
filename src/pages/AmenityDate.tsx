@@ -143,14 +143,14 @@ const getBlackoutDates = useCallback(async()=>{
                 </DemoItem>
               </DemoContainer>
             </LocalizationProvider>
-            <Button id='date-link' sx={{
+            {/* <Button id='date-link' sx={{
               alignItems:"center",
               justifyContent:"center",
               float:"inherit"
-            }}>
+            }}> */}
             <Link
               to="/dashboard/amenities/book-amenity/book-amenity-time"
-              state={{ amenity, bookingCount, date: value }}
+              state={{ amenity, bookingCount, date: value }}></Link>
           <br></br>
           <Typography variant="h5" marginLeft="3rem" display="flex">
             Booking Amenity
@@ -234,7 +234,11 @@ const getBlackoutDates = useCallback(async()=>{
             </Grid>
           </Card>
         </Grid>
+        </Grid>
+        </Card>
+      </Grid>
       </Grid>
     </div>
   );
-}
+  }
+
