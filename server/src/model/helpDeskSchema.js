@@ -15,6 +15,10 @@ const helpDeskSchema = mongoose.Schema({
     },
     userId : {
         type : mongoose.Schema.Types.ObjectId,
+    },
+    status : {
+        type : mongoose.Schema.Types.String,
+        default : "Pending",
     }
 });
 

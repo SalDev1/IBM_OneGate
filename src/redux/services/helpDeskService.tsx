@@ -15,9 +15,25 @@ const getAllHelpDeskTickets = async(userData:any) => {
     return response.data;
 }
 
+const getAllHelpDeskTicketsByAdmin = async(user:any) => {
+    const response = await axios.get(API_URL + `/tickets/admin`,user);
+    return response.data;
+}
+
+const updateHelpDeskTicket = async(data:any) => {
+    const currData = {
+        status : data.status,
+        ticketId : data.ticket._id
+    }
+    const response = await axios.put(API_URL+`/${currData.ticketId}`,currData);
+    return response.data;
+}
+
 const helpDeskService = {
     addHelpDeskTicket,
-    getAllHelpDeskTickets
+    getAllHelpDeskTickets,
+    getAllHelpDeskTicketsByAdmin,
+    updateHelpDeskTicket,
 }
 
 export default helpDeskService;

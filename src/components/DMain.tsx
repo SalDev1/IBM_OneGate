@@ -1,27 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { getAllHelpDeskTickets } from "../redux/helpdeskSlice";
+import { getAllHelpDeskTickets, getAllHelpDeskTicketsByAdmin, updateHelpDeskTicket } from "../redux/helpdeskSlice";
 import { Box, Card, CardContent, Container, Typography } from "@mui/material";
 import TicketsGraph from "./TicketsGraph";
 import { MdDone } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import Button from "./button";
+import { useNavigate } from "react-router-dom";
 
 const DMain = () => {
     const [currentHelpDeskTickets , setCurrentHelpDeskTickets] = useState<any>([]);
     const getUser : any = localStorage.getItem('user')
     const user = JSON.parse(getUser);
+    
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     console.log(currentHelpDeskTickets);
 
     useEffect(() => {
-        dispatch(getAllHelpDeskTickets(user))
-          .unwrap()
-          .then((res) => setCurrentHelpDeskTickets(res.tickets))
-          .catch((error) => console.log(error))
-    },[])
+        if(user.isAdmin) {
+            dispatch(getAllHelpDeskTicketsByAdmin(user))
+            .unwrap()
+            .then((res) => setCurrentHelpDeskTickets(res.tickets))
+            .catch((error) => console.log(error))
+        }
+        else {
+            dispatch(getAllHelpDeskTickets(user))
+            .unwrap()
+            .then((res) => setCurrentHelpDeskTickets(res.tickets))
+            .catch((error) => console.log(error))
+        }
+    },[currentHelpDeskTickets])
+
+    const acceptTicketHandler = (e:any , ticket:any) =>  {
+        e.preventDefault();
+        const data = {
+            status : "Accepted", 
+            ticket : ticket,
+        }
+
+        dispatch(updateHelpDeskTicket(data))
+        .unwrap().then(() => {
+          navigate('/dashboard');
+        }).catch((err) => {
+          console.log(err);
+         })
+        
+        console.log(data);
+    }
+
+    const rejectTicketHandler = (e:any,ticket:any) => {
+        e.preventDefault();
+
+        const data = {
+            status : "Rejected", 
+            ticket : ticket,
+        }
+
+        dispatch(updateHelpDeskTicket(data))
+          .unwrap().then(() => {
+            navigate('/dashboard');
+          }).catch((err) => {
+            console.log(err);
+        })
+
+        console.log(data);
+    }
 
     return (
         <>
@@ -46,14 +92,16 @@ const DMain = () => {
                                     </Box>
 
                                     <Box sx = {{paddingTop : "45px"}}>
-                                        <Typography>Status : <Typography variant="h6">None</Typography></Typography>
+                                        <Typography>Status : <Typography variant="h6">{c.status}</Typography></Typography>
                                     </Box>
 
                                     {/* Admin users gets access to these buttons */}
-                                    <Box sx = {{display : "flex" , alignItems :"center" , marginTop : "30px", justifyContent:"end"}}>
-                                        <Button style={{backgroundColor : "lightGreen" ,border:"none"}}><MdDone color="white"/></Button>
-                                        <Button style={{backgroundColor : "red" , border:"none" , marginLeft : "5px"}}><RxCross1 color = "white"/></Button>
-                                    </Box>
+                                    {user.isAdmin && c.status === "Pending" && (
+                                        <Box sx = {{display : "flex" , alignItems :"center" , marginTop : "30px", justifyContent:"end"}}>
+                                            <Button style={{backgroundColor : "lightGreen" ,border:"none"}} onClick = {(e) => acceptTicketHandler(e,c)}><MdDone color="white"/></Button>
+                                            <Button style={{backgroundColor : "red" , border:"none" , marginLeft : "5px"}} onClick = {(e) => rejectTicketHandler(e,c)}><RxCross1 color = "white"/></Button>
+                                        </Box>
+                                    )}
                                  </CardContent>
                             </Card>
                         ))}
