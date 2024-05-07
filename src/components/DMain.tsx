@@ -14,6 +14,8 @@ const DMain = () => {
     const getUser : any = localStorage.getItem('user')
     const user = JSON.parse(getUser);
     
+
+    console.log(user.isAdmin);
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ const DMain = () => {
             .then((res) => setCurrentHelpDeskTickets(res.tickets))
             .catch((error) => console.log(error))
         }
-    },[currentHelpDeskTickets])
+    },[currentHelpDeskTickets,user])
 
     const acceptTicketHandler = (e:any , ticket:any) =>  {
         e.preventDefault();
