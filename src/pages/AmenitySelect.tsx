@@ -47,7 +47,8 @@ export default function AmenitySelect() {
                     name: "Barbecue Area",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -66,7 +67,8 @@ export default function AmenitySelect() {
                     name: "Bsketball Court",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -85,7 +87,8 @@ export default function AmenitySelect() {
                     name: "Children's Play Area",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -104,7 +107,8 @@ export default function AmenitySelect() {
                     name: "Cricket Turf",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -144,7 +148,8 @@ export default function AmenitySelect() {
                     name: "library",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -163,7 +168,8 @@ export default function AmenitySelect() {
                     name: "Meeting Room",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -182,7 +188,8 @@ export default function AmenitySelect() {
                     name: "Movie Theatres",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -201,7 +208,8 @@ export default function AmenitySelect() {
                     name: "Swimming Pool",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -236,7 +244,8 @@ export default function AmenitySelect() {
                     name: "Tennis Court",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
