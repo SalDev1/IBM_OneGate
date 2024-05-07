@@ -120,6 +120,7 @@ export default function AmenitySelect() {
                 to="book-amenity-date"
                 state={{
                   amenity: {
+                    id:"6639dfbfced6f38eb689e2ce",
                     name: "Gym",
                     description:
                       "Fitness is almost everyone’s go-to goal to lead a healthy and happy life. For this, you require a good gym, a healthy diet, and a healthy lifestyle. Our community GYM can help you get the benefit of the first. We have plenty of equipments that provide muscle building training, better stamina, and even yoga classes along with a holistic approach for a happy mind and body.",
