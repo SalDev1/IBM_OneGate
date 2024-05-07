@@ -122,7 +122,8 @@ export default function AmenitySelect() {
                   amenity: {
                     name: "Gym",
                     description:
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
+                      "Fitness is almost everyone’s go-to goal to lead a healthy and happy life. For this, you require a good gym, a healthy diet, and a healthy lifestyle. Our community GYM can help you get the benefit of the first. We have plenty of equipments that provide muscle building training, better stamina, and even yoga classes along with a holistic approach for a happy mind and body.",
+                    Limit:3
                   },
                 }}
               >
@@ -209,7 +210,7 @@ export default function AmenitySelect() {
               </Link>
               <br></br>
             </ListItemButton>
-            <ListItemButton>
+            {/* <ListItemButton>
               <Link
                 to="book-amenity-date"
                 state={{
@@ -224,7 +225,7 @@ export default function AmenitySelect() {
                 STUDY ROOM
               </Link>
               <br></br>
-            </ListItemButton>
+            </ListItemButton> */}
 
             <ListItemButton>
               <Link
