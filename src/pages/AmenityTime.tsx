@@ -6,7 +6,11 @@ import DSideBar from "../components/DSideBar";
 export default function AmenityTime() {
   const location = useLocation();
   const { amenity, date, bookingCount } = location.state;
-  console.log(date);
+  console.debug(
+    "sup"
+  )
+  console.log(location.state);
+  
   return (
     <div style={{ backgroundColor: "#F6F5F2" }}>
       <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>

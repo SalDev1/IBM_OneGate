@@ -6,8 +6,13 @@ import { useState } from "react";
 import _ from "lodash";
 import { Button } from "@mui/material";
 import ThemedButton from "../components/button";
+import dayjs from "dayjs";
 
 const bookedSlotsInitial = [
+  {
+    from: 5,
+    to: 6,
+  },
   {
     from: 12,
     to: 14,
@@ -24,7 +29,7 @@ const bookedSlotsInitial = [
 
 export default function AmenitiesTimeSlot() {
   const location = useLocation();
-  const { amenity } = location.state;
+  const { amenity, bookingCount, date } = location.state;
 
   const [bookedTimeSlots, setBookedTimeSlots] = useState(bookedSlotsInitial);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<
@@ -72,8 +77,13 @@ export default function AmenitiesTimeSlot() {
                 </Typography>
                 <br></br>
                 <Typography fontWeight="bold" color="grey">
-                  Booking Count
+                  Booking Count : {bookingCount}
                 </Typography>
+                <br></br>
+                <Typography fontWeight="bold" color="grey">
+                  Date : {`${date.$D}-${Number(date.$M+1)}-${date.$y}`}
+                </Typography>
+                <br></br>
                 {selectedTimeSlot !== undefined && (
                   <Typography
                     sx={{ color: "#0022Ff" }}
@@ -85,7 +95,7 @@ export default function AmenitiesTimeSlot() {
                   </Typography>
                 )}
                 <Button variant="contained" className="mt-4">
-                  Continue
+                  Submit
                 </Button>
               </Grid>
               <Grid padding={4}>

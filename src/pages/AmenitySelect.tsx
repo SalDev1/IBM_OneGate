@@ -47,7 +47,8 @@ export default function AmenitySelect() {
                     name: "Barbecue Area",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -66,7 +67,8 @@ export default function AmenitySelect() {
                     name: "Bsketball Court",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -85,7 +87,8 @@ export default function AmenitySelect() {
                     name: "Children's Play Area",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -104,7 +107,8 @@ export default function AmenitySelect() {
                     name: "Cricket Turf",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -120,9 +124,11 @@ export default function AmenitySelect() {
                 to="book-amenity-date"
                 state={{
                   amenity: {
+                    id:"6639dfbfced6f38eb689e2ce",
                     name: "Gym",
                     description:
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
+                      "Fitness is almost everyone’s go-to goal to lead a healthy and happy life. For this, you require a good gym, a healthy diet, and a healthy lifestyle. Our community GYM can help you get the benefit of the first. We have plenty of equipments that provide muscle building training, better stamina, and even yoga classes along with a holistic approach for a happy mind and body.",
+                    Limit:3
                   },
                 }}
               >
@@ -142,7 +148,8 @@ export default function AmenitySelect() {
                     name: "library",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -161,7 +168,8 @@ export default function AmenitySelect() {
                     name: "Meeting Room",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -180,7 +188,8 @@ export default function AmenitySelect() {
                     name: "Movie Theatres",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -199,7 +208,8 @@ export default function AmenitySelect() {
                     name: "Swimming Pool",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
@@ -209,7 +219,7 @@ export default function AmenitySelect() {
               </Link>
               <br></br>
             </ListItemButton>
-            <ListItemButton>
+            {/* <ListItemButton>
               <Link
                 to="book-amenity-date"
                 state={{
@@ -224,7 +234,7 @@ export default function AmenitySelect() {
                 STUDY ROOM
               </Link>
               <br></br>
-            </ListItemButton>
+            </ListItemButton> */}
 
             <ListItemButton>
               <Link
@@ -234,7 +244,8 @@ export default function AmenitySelect() {
                     name: "Tennis Court",
                     description:
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                  },
+                      Limit:3
+                    },
                 }}
               >
                 <ListItemIcon>
