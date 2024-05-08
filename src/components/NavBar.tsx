@@ -32,7 +32,7 @@ const NavBar = () => {
     <Button href="/login" variant={transparent ? "lightBorder" : undefined}>
       <p className="">Login</p>
     </Button>,
-    <Button href="/login" variant="primary" className="ml-4">
+    <Button href="/signup" variant="primary" className="ml-4">
       <p className="text-nowrap">Sign Up</p>
     </Button>,
   ];

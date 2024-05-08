@@ -2,13 +2,16 @@ import { Card, Grid, Typography } from "@mui/material";
 import DNavBar from "../components/DNavBar";
 import DSideBar from "../components/DSideBar";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import _ from "lodash";
 import { Button } from "@mui/material";
 import ThemedButton from "../components/button";
+import { useShallow } from "zustand/react/shallow";
 import dayjs from "dayjs";
+import useAmenitiesStore from "../redux/amentiySlice";
+import Amenity from "../types/Amenity";
 
-const bookedSlotsInitial = [
+const bookedTimeSlots = [
   {
     from: 5,
     to: 6,
@@ -28,13 +31,51 @@ const bookedSlotsInitial = [
 ];
 
 export default function AmenitiesTimeSlot() {
-  const location = useLocation();
-  const { amenity, bookingCount, date } = location.state;
+  const { amenity, bookingCount, date } = useLocation().state;
+  const [selectedTimeSlot, setSelectedTimeSlot] = useAmenitiesStore(
+    useShallow((state) => [state.timeSlot?.from ?? null, state.setTimeSlot])
+  );
+  const [
+    setUserId,
+    setAmenity,
+    setBookingCount,
+    setDateNo,
+    setMonthNo,
+    setYearNo,
+  ] = useAmenitiesStore(
+    useShallow((state) => [
+      state.setUserId,
+      state.setAmenity,
+      state.setBookingCount,
+      state.setDateNo,
+      state.setMonthNo,
+      state.setYearNo,
+    ])
+  );
+  const storeData = useAmenitiesStore(
+    useShallow((state) => ({
+      userId: state.userId,
+      amenity: state.amenity,
+      monthNo: state.monthNo,
+      yearNo: state.yearNo,
+      dateNo: state.dateNo,
+      timeSlot: state.timeSlot,
+      bookingCount: state.bookingCount,
+    }))
+  );
 
-  const [bookedTimeSlots, setBookedTimeSlots] = useState(bookedSlotsInitial);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState<
-    number | undefined
-  >();
+  useEffect(() => {
+    setUserId(JSON.parse(localStorage.getItem("user") ?? `{}`)?._id);
+    setAmenity(amenity as Amenity);
+    setBookingCount(bookingCount);
+    setDateNo(date.$D);
+    setMonthNo(date.$M);
+    setYearNo(date.$y);
+  }, []);
+
+  const handleSubmit = () => {
+    console.log(JSON.stringify(storeData, null, 2));
+  };
 
   return (
     <div style={{ backgroundColor: "#F6F5F2" }}>
@@ -81,20 +122,25 @@ export default function AmenitiesTimeSlot() {
                 </Typography>
                 <br></br>
                 <Typography fontWeight="bold" color="grey">
-                  Date : {`${date.$D}-${Number(date.$M+1)}-${date.$y}`}
+                  Date : {`${date.$D}-${Number(date.$M + 1)}-${date.$y}`}
                 </Typography>
                 <br></br>
-                {selectedTimeSlot !== undefined && (
-                  <Typography
-                    sx={{ color: "#0022Ff" }}
-                    fontWeight="bold"
-                    color="grey"
-                  >
-                    Selected Time Slot: {selectedTimeSlot}:00 to{" "}
-                    {selectedTimeSlot + 1}:00
-                  </Typography>
-                )}
-                <Button variant="contained" className="mt-4">
+                {selectedTimeSlot !== undefined &&
+                  selectedTimeSlot !== null && (
+                    <Typography
+                      sx={{ color: "#0022Ff" }}
+                      fontWeight="bold"
+                      color="grey"
+                    >
+                      Selected Time Slot: {selectedTimeSlot}:00 to{" "}
+                      {selectedTimeSlot + 1}:00
+                    </Typography>
+                  )}
+                <Button
+                  variant="contained"
+                  className="mt-4"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </Button>
               </Grid>
@@ -106,6 +152,7 @@ export default function AmenitiesTimeSlot() {
                   });
                   return (
                     <ThemedButton
+                      key={time}
                       variant={
                         isBooked
                           ? "inactive"
