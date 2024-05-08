@@ -10,6 +10,7 @@ import { useShallow } from "zustand/react/shallow";
 import dayjs from "dayjs";
 import useAmenitiesStore from "../redux/amentiySlice";
 import Amenity from "../types/Amenity";
+import axios from "axios";
 
 const bookedTimeSlots = [
   {
@@ -74,7 +75,9 @@ export default function AmenitiesTimeSlot() {
   }, []);
 
   const handleSubmit = () => {
-    console.log(JSON.stringify(storeData, null, 2));
+    const data = JSON.stringify(storeData, null, 2);
+    console.log("Posting Data: " + data);
+    axios.post("http://localhost:4000/bookings", data);
   };
 
   return (
