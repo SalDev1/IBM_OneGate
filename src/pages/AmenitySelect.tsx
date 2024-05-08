@@ -19,7 +19,30 @@ import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import DNavBar from "../components/DNavBar";
 import DSideBar from "../components/DSideBar";
+import { useState, useEffect, useCallback } from "react";
 export default function AmenitySelect() {
+
+  const [amenities,setAmenities] = useState<[{Name:string,Description:string,Limit:number}] | []>([])
+
+  const icons = [<OutdoorGrillIcon/>,<SportsBasketballIcon/>,<ToysIcon/>,<SportsCricketIcon/>,<FitnessCenterIcon />,<LibraryBooksIcon/>,<MeetingRoomIcon/>,<MovieIcon/>,<PoolIcon/>,<SportsTennisIcon />]
+
+  useEffect(()=>{
+    getAmenities()
+  },[])
+  
+  const getAmenities = useCallback(async()=>{  
+    fetch('http://localhost:4000/amenities',{
+      method:"GET",
+      headers:{"Content-Type":"application/json"}
+  }).then(res => {
+    return res.json()
+  }).then(data => {
+    console.log(data)
+    setAmenities(data)
+  })
+  
+    },[]) 
+
   return (
     <div style={{ backgroundColor: "#F6F5F2" }}>
       <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -39,27 +62,29 @@ export default function AmenitySelect() {
             variant="outlined"
             sx={{ maxWidth: 1200, margin: 5, padding: 6 }}
           >
-            <ListItemButton component="a" href="#simple-list">
+
+            {amenities.map(e => <ListItemButton component="a" href="#simple-list">
               <Link
                 to="book-amenity-date"
                 state={{
                   amenity: {
-                    name: "Barbecue Area",
-                    description:
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab itaque iusto sed animi officiis, nobis laboriosam! Magni non assumenda modi, minima fugit laborum numquam qui natus.Laborum, hic quibusdam.",
-                      Limit:3
+                    name: e.Name,
+                    description: e.Description,
+                      Limit:e.Limit
                     },
                 }}
               >
                 <ListItemIcon>
-                <OutdoorGrillIcon/>
+                
+                {icons[Math.floor(Math.random() * (9 - 0 + 1) + 0)]}
                 </ListItemIcon>
-                BARBECUE AREA
+                {e.Name}
               </Link>
               <br></br>
-            </ListItemButton>
+            </ListItemButton>)}
+            
 
-            <ListItemButton >
+            {/* <ListItemButton >
               <Link
                 to="book-amenity-date"
                 state={{
@@ -236,7 +261,7 @@ export default function AmenitySelect() {
               <br></br>
             </ListItemButton> */}
 
-            <ListItemButton>
+            {/* <ListItemButton>
               <Link
                 to="book-amenity-date"
                 state={{
@@ -254,7 +279,7 @@ export default function AmenitySelect() {
                 TENNIS COURT
               </Link>
               <br></br>
-            </ListItemButton>
+            </ListItemButton>  */}
 
           </Card>
           
