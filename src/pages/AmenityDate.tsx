@@ -6,7 +6,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { useState, useEffect, useCallback } from "react";
 import React from "react";
-import axios from "axios";
 
 import {
   Button,
@@ -79,19 +78,17 @@ useEffect(()=>{
 },[monthYear,bookingCount])
 
 const getBlackoutDates = useCallback(async()=>{  
-  const response = await fetch('http://localhost:4000/bookings',{
-    method:"GET",
+  fetch('http://localhost:4000/bookings/bookedDates',{
+    method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({"amenityId":amenity.id,"monthNo":monthYear.month,"yearNo":monthYear.year})
+}).then(res => {
+  return res.json()
+}).then(data => {
+  setBlackoutDates(data)
 })
 
-console.log(response)
-
-
   },[]) 
-
-  console.log(monthYear)
-  console.log(blackoutDates)
 
   return (
     <div style={{ backgroundColor: "#F6F5F2" }}>

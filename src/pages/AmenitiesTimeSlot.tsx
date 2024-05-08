@@ -10,10 +10,6 @@ import dayjs from "dayjs";
 
 const bookedSlotsInitial = [
   {
-    from: 5,
-    to: 6,
-  },
-  {
     from: 12,
     to: 14,
   },
@@ -99,7 +95,7 @@ export default function AmenitiesTimeSlot() {
                 </Button>
               </Grid>
               <Grid padding={4}>
-                {_.range(0, 23).map((time) => {
+                {_.range(9, 21).map((time) => {
                   let isBooked = false;
                   bookedTimeSlots.forEach((slot) => {
                     if (time >= slot.from && time < slot.to) isBooked = true;

@@ -7,7 +7,7 @@ import {
 } from "../controllers/bookingController.js";
 const Router = express.Router();
 
-Router.route("/").get(getBookedDates);
+Router.route("/").get(getBookings);
 Router.route("/:id").get(getBookingById);
 Router.route("/").post(addNewBooking);
 Router.route("/bookedDates").post(getBookedDates);
