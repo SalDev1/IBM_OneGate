@@ -23,6 +23,7 @@ const getBookedDates = asyncHandler(async (req, res) => {
       $lte: new Date(yearNo, monthNo - 1, lastDay, 23, 59, 59),
     },
   });
+  
   const limit = (await Amenity.findById(amenityId)).Limit;
   let booked = [];
   if (bookings) {
