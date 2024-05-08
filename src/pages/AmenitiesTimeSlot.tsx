@@ -77,7 +77,7 @@ export default function AmenitiesTimeSlot() {
   const handleSubmit = () => {
     const data = JSON.stringify(storeData, null, 2);
     console.log("Posting Data: " + data);
-    axios.post("http://localhost:4000/bookings", data);
+    axios.post("http://localhost:4000/amenities", data);
   };
 
   return (

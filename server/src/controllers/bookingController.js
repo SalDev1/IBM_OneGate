@@ -23,7 +23,7 @@ const getBookedDates = asyncHandler(async (req, res) => {
       $lte: new Date(yearNo, monthNo - 1, lastDay, 23, 59, 59),
     },
   });
-  
+
   const limit = (await Amenity.findById(amenityId)).Limit;
   let booked = [];
   if (bookings) {
@@ -42,10 +42,12 @@ const getBookedDates = asyncHandler(async (req, res) => {
 const addNewBooking = asyncHandler(async (req, res) => {
   let newBooking = req.body;
   if (
-    !newBooking.Count ||
-    !newBooking.AmenityId ||
-    !newBooking.UserId ||
-    !newBooking.DateTime
+    !newBooking.bookingCount ||
+    !newBooking.amenity ||
+    !newBooking.userId ||
+    !newBooking.monthNo ||
+    !newBooking.yearNo ||
+    !newBooking.dateNo
   ) {
     res.status(400).json({ msg: "Missing Fields" });
   }
