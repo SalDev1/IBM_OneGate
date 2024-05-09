@@ -1,18 +1,28 @@
-import Query from "../model/queryModal.js";
-import asyncHandler from "express-async-handler";
+import mongoose from "mongoose";
 
-const getQueries = asyncHandler(async (req, res) => {
-  const queries = await Query.find({});
-  res.status(200).json(queries);
+const querySchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    match: /^\S+@\S+\.\S+$/,
+  },
+  subject: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const addQuery = asyncHandler(async (req, res) => {
-  const { name, email, subject, message } = req.body;
-  if (!name || !email || !subject || !message) {
-    res.status(400).json({ msg: "Missing Fields" });
-  }
-  const newQuery = await Query.create({ name, email, subject, message });
-  res.status(201).json(newQuery);
-});
-
-export { getQueries, addQuery };
+const Query = mongoose.model("query", querySchema);
+export default Query;
