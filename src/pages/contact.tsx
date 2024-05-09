@@ -1,8 +1,36 @@
-import { Container, Grid, Box, TextField, Typography } from "@mui/material";
+import { Container, Grid, TextField, Button, Typography } from "@mui/material";
 import NavBar from "../components/NavBar";
 import Footer from "../components/footer";
+import { addQuery } from "../redux/querySlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
 
 export default function PageContact() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const status = document.getElementById("contactFormStatus");
+    const formData = new FormData(e.target);
+
+    const queryData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("message subject"),
+      message: formData.get("message"),
+    };
+
+    dispatch(addQuery(queryData))
+      .unwrap()
+      .then(() => {
+        status.innerHTML = "Thanks for your submission!";
+      })
+      .catch((error: any) => {
+        status.innerHTML = "Oops! There was a problem submitting your form";
+      });
+  };
+
   return (
     <>
       <NavBar />
@@ -11,71 +39,70 @@ export default function PageContact() {
           <img
             src="https://unsplash.com/photos/4xe-yVFJCvw/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTV8fHRhbGt8ZW58MHx8fHwxNzEzOTYxNDI2fDA&force=true&w=800"
             className="bg-black w-full h-full aspect-video md:aspect-square object-cover"
-          ></img>
+            alt="Contact"
+          />
           <Grid p={4} container justifyContent="center">
             <Typography variant="h6">Contact Us</Typography>
-            <Grid container sx={{ width: "100%" }}>
-              <Box
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": { m: 1 },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <Grid container>
-                  <Grid item xs={6} sx={{ pr: 1 }}>
-                    <TextField
-                      sx={{ width: "100%" }}
-                      required
-                      variant="filled"
-                      label="Name"
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      sx={{ width: "100%" }}
-                      required
-                      label="Email"
-                      type="email"
-                      variant="filled"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      sx={{ width: "100%" }}
-                      required
-                      label="Subject"
-                      variant="filled"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      sx={{ width: "100%" }}
-                      id="outlined-number"
-                      label="Message"
-                      type="number"
-                      multiline
-                      variant="filled"
-                      rows={4}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      pt: 1,
-                      display: "flex",
-                      flexDirection: "row-reverse",
-                    }}
-                  >
-                    <button className="primary sm:flex-grow-1 md:flex-grow-0">
-                      Submit
-                    </button>
-                  </Grid>
+            <form
+              id="contactForm"
+              onSubmit={handleSubmit}
+              style={{ width: "100%" }}
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    name="name"
+                    variant="filled"
+                    required
+                  />
                 </Grid>
-              </Box>
-            </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    name="email"
+                    variant="filled"
+                    type="email"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Subject"
+                    name="message subject"
+                    variant="filled"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Message"
+                    name="message"
+                    variant="filled"
+                    multiline
+                    rows={4}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                  >
+                    Submit
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <div className="form-status" id="contactFormStatus" />
+                </Grid>
+              </Grid>
+            </form>
           </Grid>
         </div>
       </Container>
