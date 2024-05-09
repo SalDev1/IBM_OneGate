@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import helpDeskRoutes from "./routes/helpDeskRoutes.js";
 import amenities from "./routes/amenityRoutes.js";
 import bookings from "./routes/bookingRoutes.js";
+import queryRoutes from "./routes/queryRoutes.js";
 
 const { port } = constants;
 
@@ -17,6 +18,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/helpdesk", helpDeskRoutes);
 app.use("/amenities", amenities);
 app.use("/bookings", bookings);
+app.use("/query", queryRoutes);
 
 connectDb();
 
