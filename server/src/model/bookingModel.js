@@ -20,4 +20,4 @@ const bookingSchema = new mongoose.Schema({ //literal style
     }
 })
 
-export default mongoose.model("Booking",bookingSchema) //decorating - Product is an alias - adding new behaviour to object
+export default mongoose.model("bookings",bookingSchema) //decorating - Product is an alias - adding new behaviour to object
